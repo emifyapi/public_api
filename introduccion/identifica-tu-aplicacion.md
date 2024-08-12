@@ -1,2 +1,0 @@
-# Identifica tu aplicación
-
