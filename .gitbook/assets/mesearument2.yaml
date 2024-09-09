@@ -1,0 +1,2513 @@
+openapi: 3.0.3
+info:
+  title: Facttu
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: '{{url}}'
+  - url: https://www.appoctava.cl
+paths:
+  /api/login:
+    post:
+      tags:
+        - Access
+        - Login
+      summary: Login
+      description: Login
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: alvaroamav96@gmail.com
+                password:
+                  type: string
+                  example: '123456'
+            examples:
+              Login:
+                value:
+                  email: alvaroamav96@gmail.com
+                  password: '123456'
+      responses:
+        '200':
+          description: ''
+  /api/logout:
+    post:
+      tags:
+        - Access
+        - Login
+      summary: Logout
+      description: Logout
+      operationId: logout
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/registration:
+    post:
+      tags:
+        - Access
+        - Registration
+      summary: Registration
+      description: Registration
+      operationId: registration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: demo@example.com
+                password:
+                  type: string
+                  example: '123456'
+            examples:
+              Registration:
+                value:
+                  email: demo@example.com
+                  password: '123456'
+      responses:
+        '200':
+          description: ''
+  /api/companies:
+    post:
+      tags:
+        - Companies
+        - companies
+      summary: New Company
+      description: >-
+        ### Create a New Company
+
+
+        This endpoint allows you to create a new company.
+
+
+        #### Request Body
+
+
+        - `legal_name` (string, required): The legal name of the company.
+            
+        - `tax_identifier` (string, required): The tax identifier of the
+        company.
+            
+        - `tax_identifier_name` (string, required): The name associated with the
+        tax identifier.
+            
+        - `start_activities_date` (string, required): The date when the company
+        started its activities.
+            
+        - `id_currency` (integer, required): The ID of the currency associated
+        with the company.
+            
+
+        #### Response
+
+
+        Upon successful creation of the company, the response will include the
+        details of the newly created company.
+      operationId: newCompany
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_currency:
+                  type: number
+                  example: 5
+                legal_name:
+                  type: string
+                  example: Chile SRL
+                start_activities_date:
+                  type: string
+                  example: '2023-01-01'
+                tax_identifier:
+                  type: string
+                  example: '434234'
+                tax_identifier_name:
+                  type: string
+                  example: RUT
+            examples:
+              New Company:
+                value:
+                  id_currency: 5
+                  legal_name: Chile SRL
+                  start_activities_date: '2023-01-01'
+                  tax_identifier: '434234'
+                  tax_identifier_name: RUT
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/companies/apikey:
+    post:
+      tags:
+        - Companies
+        - companies
+      summary: New ApiKey
+      description: New ApiKey
+      operationId: newApikey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: key para empresa
+                id_company:
+                  type: string
+                  example: '33'
+            examples:
+              New ApiKey:
+                value:
+                  description: key para empresa
+                  id_company: '33'
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/companies/16/certificates:
+    post:
+      tags:
+        - Companies
+        - companies
+      summary: New Certificate
+      description: New Certificate
+      operationId: newCertificate
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                certificate:
+                  type: string
+                  format: binary
+                environment:
+                  type: string
+                  example: Production
+                expiration_date:
+                  type: string
+                  example: '2025-03-22'
+                from_date:
+                  type: string
+                  example: '2023-03-23'
+                password:
+                  type: string
+                  example: ''
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/companies/24/logo:
+    post:
+      tags:
+        - Companies
+        - companies
+      summary: Upload logo
+      description: Upload logo
+      operationId: uploadLogo
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                logo:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/companies/33/enumeration/upload:
+    post:
+      tags:
+        - Companies
+        - companies
+      summary: Upload enumeration
+      description: Upload enumeration
+      operationId: uploadEnumeration
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                id_document_type:
+                  type: string
+                  example: '55'
+      responses:
+        '200':
+          description: ''
+      security:
+        - apiKey: []
+  /api/companies/33/enumeration/4/config:
+    put:
+      tags:
+        - Companies
+        - companies
+      summary: config enumeration
+      description: config enumeration
+      operationId: configEnumeration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enumeration_starts_from:
+                  type: number
+                  example: 5201
+            examples:
+              config enumeration:
+                value:
+                  enumeration_starts_from: 5201
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/companies/33/enumeration/4:
+    delete:
+      tags:
+        - Companies
+        - companies
+      summary: inactive enumeration
+      description: inactive enumeration
+      operationId: inactiveEnumeration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enumeration_starts_from:
+                  type: number
+                  example: 5201
+            examples:
+              inactive enumeration:
+                value:
+                  enumeration_starts_from: 5201
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/companies/29:
+    put:
+      tags:
+        - Companies
+        - companies
+      summary: Update company settings
+      description: Update company settings
+      operationId: updateCompanySettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decimal_places:
+                  type: number
+                  example: 1
+                decimal_separator:
+                  type: string
+                  example: ','
+                thousand_separator:
+                  type: string
+                  example: .
+            examples:
+              Update company settings:
+                value:
+                  decimal_places: 1
+                  decimal_separator: ','
+                  thousand_separator: .
+      responses:
+        '200':
+          description: ''
+      security:
+        - apiKey: []
+  /api/companies/33/enumeration/list:
+    get:
+      tags:
+        - Companies
+        - companies
+      summary: Enumeration Config
+      description: Enumeration Config
+      operationId: enumerationConfig
+      responses:
+        '200':
+          description: ''
+      security:
+        - apiKey: []
+  /api/certificates/16/list:
+    get:
+      tags:
+        - Companies
+        - companies
+      summary: Certificados
+      description: Certificados
+      operationId: certificados
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: string
+            example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+            example: A
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/list-api-keys/apikeys/29/list:
+    get:
+      tags:
+        - Companies
+        - companies
+      summary: Api keys
+      description: Api keys
+      operationId: apiKeys
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/invoices:
+    post:
+      tags:
+        - Documents
+        - invoices
+      summary: Create Invoice
+      description: >-
+        This endpoint allows you to create a new invoice by sending a POST
+        request to the specified URL. The request should include a JSON payload
+        in the raw request body, containing details such as branch office,
+        invoice type, dates, concept, issuer information, recipient information,
+        currency, payment method, items, and totals. Each section of the payload
+        should be filled with relevant information for the invoice.
+
+
+        The response will provide details about the newly created invoice,
+        including an invoice ID, status, and any relevant payment information.
+        Ensure that the request body and response are structured according to
+        the provided schema for successful invoice creation.
+      operationId: createInvoice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                billing_reference:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      branch_office:
+                        type: number
+                        example: 1
+                      invoice_date:
+                        type: string
+                        example: '2024-06-19 08:00:00'
+                      invoice_type:
+                        type: string
+                        example: FCA
+                      number:
+                        type: number
+                        example: 2507
+                  example:
+                    - branch_office: 1
+                      invoice_date: '2024-06-19 08:00:00'
+                      invoice_type: FCA
+                      number: 2507
+                branch_office:
+                  type: number
+                  example: 1
+                concept:
+                  type: string
+                  example: '3'
+                currency:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                      example: ARS
+                    exchange_rate:
+                      type: number
+                      example: 1
+                external_reference:
+                  type: string
+                  example: '103513337'
+                invoice_date:
+                  type: string
+                  example: '2024-06-18 08:00:00'
+                issuer:
+                  type: object
+                  properties:
+                    address:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          example: SUIPACHA 250 1
+                        country:
+                          type: string
+                          example: ARG
+                        phone:
+                          type: string
+                          example: 0810-1566666666
+                        state:
+                          type: string
+                          example: Ciudad de Buenos Aires
+                    document_number:
+                      type: string
+                      example: '20309807430'
+                    document_type:
+                      type: string
+                      example: CUIT
+                    legal_name:
+                      type: string
+                      example: Demo SRL
+                    tax_information:
+                      type: object
+                      properties:
+                        start_activities_date:
+                          type: string
+                          example: value2
+                        tax_condition:
+                          type: string
+                          example: value1
+                items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      code:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            example: sku
+                          value:
+                            type: string
+                            example: 1HSCONSUL
+                      description:
+                        type: string
+                        example: 1HSCONSUL
+                      discount_amount:
+                        type: number
+                        example: 0
+                      quantity:
+                        type: number
+                        example: 1
+                      taxes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            amount:
+                              type: number
+                              example: 2730
+                            rate:
+                              type: number
+                              example: 21
+                            type:
+                              type: string
+                              example: iva21
+                        example:
+                          - amount: 2730
+                            rate: 21
+                            type: iva21
+                      unit_of_measure:
+                        type: string
+                        example: unidad
+                      unit_price:
+                        type: number
+                        example: 13000
+                  example:
+                    - code:
+                        type: sku
+                        value: 1HSCONSUL
+                      description: 1HSCONSUL
+                      discount_amount: 0
+                      quantity: 1
+                      taxes:
+                        - amount: 2730
+                          rate: 21
+                          type: iva21
+                      unit_of_measure: unidad
+                      unit_price: 13000
+                number:
+                  type: number
+                  example: 2458
+                observations:
+                  type: string
+                  example: Nuestro horario de atención es de Lunes a Sábado de 9 a 20hs
+                payment_due_date:
+                  type: string
+                  example: '2024-06-19'
+                payment_method:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                      example: contado
+                    description:
+                      type: string
+                      example: Cuenta corriente
+                recipient:
+                  type: object
+                  properties:
+                    address:
+                      type: object
+                      properties:
+                        country:
+                          type: string
+                          example: ARG
+                        phone:
+                          type: string
+                          example: '123456'
+                        state:
+                          type: string
+                          example: Ciudad de Buenos Aires
+                    document_number:
+                      type: string
+                      example: '23123123123'
+                    document_type:
+                      type: string
+                      example: CUIT
+                    legal_name:
+                      type: string
+                      example: ADADASD
+                    tax_information:
+                      type: object
+                      properties:
+                        start_activities_date:
+                          type: string
+                          example: value2
+                        tax_condition:
+                          type: string
+                          example: value1
+                service_end_date:
+                  type: string
+                  example: '2024-06-19 23:59:59'
+                service_start_date:
+                  type: string
+                  example: '2024-06-11 00:00:00'
+                totals:
+                  type: object
+                  properties:
+                    sub_total:
+                      type: number
+                      example: 13000
+                    taxes:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          amount:
+                            type: number
+                            example: 2730
+                          base_amount:
+                            type: number
+                            example: 13000
+                          type:
+                            type: string
+                            example: iva21
+                      example:
+                        - amount: 2730
+                          base_amount: 13000
+                          type: iva21
+                    total:
+                      type: number
+                      example: 15730
+            examples:
+              Create Invoice:
+                value:
+                  branch_office: 1
+                  concept: '3'
+                  currency:
+                    code: ARS
+                    exchange_rate: 1
+                  external_reference: '103513046'
+                  invoice_date: '2024-08-19 08:00:00'
+                  invoice_type: FCA
+                  issuer:
+                    address:
+                      address: SUIPACHA 250 1
+                      country: AR
+                      phone: 0810-1566666666
+                      region: AR-C
+                    document_number: '20954058310'
+                    document_type: CUIT
+                    legal_name: Demo SRL
+                    tax_information:
+                      start_activities_date: '2024-05-11 15:00:00'
+                      tax_condition: value1
+                  items:
+                    - code:
+                        type: sku
+                        value: '898765'
+                      code_unit_of_measure: u
+                      description: A PRODUCTO
+                      discount_amount: 0
+                      quantity: 1
+                      taxes:
+                        - amount: 19.95
+                          rate: 21
+                          type: iva21
+                      unit_price: 95
+                    - code_unit_of_measure: u
+                      description: 'prod b '
+                      discount_amount: 10
+                      quantity: 3
+                      taxes:
+                        - amount: 9.45
+                          rate: 10.5
+                          type: iva105
+                      unit_price: 100
+                    - code:
+                        type: sku
+                        value: 1HSCONSUL
+                      code_unit_of_measure: u
+                      description: 1HSCONSUL
+                      discount_amount: 0
+                      quantity: 1
+                      taxes:
+                        - amount: 2730
+                          rate: 21
+                          type: iva21
+                      unit_price: 13000
+                  observations: Nuestro horario de atención es de Lunes a Sábado de 9 a 20hs
+                  payment_due_date: '2024-08-19'
+                  payment_method:
+                    code: CON
+                    description: Cuenta corriente
+                  recipient:
+                    address:
+                      address: av corrientes 848
+                      country: AR
+                      phone: '123456'
+                      region: AR-C
+                    document_number: '23123123123'
+                    document_type: CUIT
+                    legal_name: ADADASD
+                    tax_information:
+                      start_activities_date: '2024-05-11 15:00:00'
+                      tax_condition: value1
+                  service_end_date: '2024-08-19 23:59:59'
+                  service_start_date: '2024-08-06 00:00:00'
+                  totals:
+                    discount: 30
+                    sub_total: 13395
+                    taxes:
+                      - amount: 2749.95
+                        base_amount: 13095
+                        type: iva21
+                      - amount: 28.35
+                        base_amount: 270
+                        type: iva105
+                    total: 16143.3
+              Nuevo Nota credito:
+                value:
+                  billing_reference:
+                    - branch_office: 1
+                      invoice_date: '2024-06-19 08:00:00'
+                      invoice_type: FCA
+                      number: 2507
+                  branch_office: 1
+                  concept: '3'
+                  currency:
+                    code: ARS
+                    exchange_rate: 1
+                  external_reference: '103513337'
+                  invoice_date: '2024-06-18 08:00:00'
+                  issuer:
+                    address:
+                      address: SUIPACHA 250 1
+                      country: ARG
+                      phone: 0810-1566666666
+                      state: Ciudad de Buenos Aires
+                    document_number: '20309807430'
+                    document_type: CUIT
+                    legal_name: Demo SRL
+                    tax_information:
+                      start_activities_date: value2
+                      tax_condition: value1
+                  items:
+                    - code:
+                        type: sku
+                        value: 1HSCONSUL
+                      description: 1HSCONSUL
+                      discount_amount: 0
+                      quantity: 1
+                      taxes:
+                        - amount: 2730
+                          rate: 21
+                          type: iva21
+                      unit_of_measure: unidad
+                      unit_price: 13000
+                  number: 2458
+                  observations: Nuestro horario de atención es de Lunes a Sábado de 9 a 20hs
+                  payment_due_date: '2024-06-19'
+                  payment_method:
+                    code: contado
+                    description: Cuenta corriente
+                  recipient:
+                    address:
+                      country: ARG
+                      phone: '123456'
+                      state: Ciudad de Buenos Aires
+                    document_number: '23123123123'
+                    document_type: CUIT
+                    legal_name: ADADASD
+                    tax_information:
+                      start_activities_date: value2
+                      tax_condition: value1
+                  service_end_date: '2024-06-19 23:59:59'
+                  service_start_date: '2024-06-11 00:00:00'
+                  totals:
+                    sub_total: 13000
+                    taxes:
+                      - amount: 2730
+                        base_amount: 13000
+                        type: iva21
+                    total: 15730
+      responses:
+        '200':
+          description: ''
+      security:
+        - apiKey: []
+        - bearerAuth: []
+  /api/invoices/66742d6ba3c5824b810509d3/void:
+    post:
+      tags:
+        - Documents
+        - invoices
+      summary: void
+      description: void
+      operationId: void
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cancellation_date:
+                  type: string
+                  example: '2024-06-19'
+                observations:
+                  type: string
+                  example: El comprobante se emitio por error
+                reason_code:
+                  type: string
+                  example: '002'
+            examples:
+              void:
+                value:
+                  cancellation_date: '2024-06-19'
+                  observations: El comprobante se emitio por error
+                  reason_code: '002'
+      responses:
+        '200':
+          description: ''
+      security:
+        - apiKey: []
+  /api/invoices/66c3511cbb4f9ca3c20f6f72:
+    get:
+      tags:
+        - Documents
+        - invoices
+      summary: Get Invoice
+      description: Get Invoice
+      operationId: getInvoice
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get Invoice:
+                value: ''
+      responses:
+        '200':
+          description: ''
+      security:
+        - apiKey: []
+  /api/invoices/list:
+    get:
+      tags:
+        - Documents
+        - invoices
+      summary: Get Invoices by Filters
+      description: Get Invoices by Filters
+      operationId: getInvoicesByFilters
+      parameters:
+        - name: invoice_date_from
+          in: query
+          schema:
+            type: string
+            example: '2024-06-19'
+        - name: invoice_date_to
+          in: query
+          schema:
+            type: string
+            example: '2024-06-20'
+        - name: recipient_document_number
+          in: query
+          schema:
+            type: string
+            example: '231231245345'
+        - name: status
+          in: query
+          schema:
+            type: string
+            example: Accepted
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get Invoices by Filters:
+                value: ''
+      responses:
+        '200':
+          description: ''
+      security:
+        - apiKey: []
+  /api/backoffice/invoices/list:
+    get:
+      tags:
+        - Documents
+        - invoices
+      summary: Get backoffice Invoices by Filters
+      description: Get backoffice Invoices by Filters
+      operationId: getBackofficeInvoicesByFilters
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Get backoffice Invoices by Filters:
+                value: ''
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/invoices/66ba413e9f21bc611a022ef4/download:
+    post:
+      tags:
+        - Documents
+        - invoices
+      summary: Download invoice
+      description: Download invoice
+      operationId: downloadInvoice
+      responses:
+        '200':
+          description: ''
+      security:
+        - apiKey: []
+  /api/comprobantes/660448c05915e7c71901aef2/sendbyemail:
+    post:
+      tags:
+        - Documents
+        - invoices
+      summary: Send by Email
+      description: Send by Email
+      operationId: sendByEmail
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/regions:
+    get:
+      tags:
+        - System Configuration
+        - countries
+      summary: regions
+      description: >-
+        This endpoint retrieves a list of regions based on the provided country
+        ID. The request should be made using an HTTP GET method to the specified
+        URL with the "id_country" query parameter set to the desired country ID.
+
+
+        The response to this request is a JSON object representing the schema of
+        the data returned. It will include the structure and data types of the
+        properties in the response payload, providing a clear understanding of
+        the expected format of the regions data.
+
+
+        Please note that the response will not contain actual data, but rather a
+        schema definition to guide the consumer on the expected structure of the
+        response payload.
+      operationId: regions
+      parameters:
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: '2'
+          description: ID del país consultado
+      responses:
+        '200':
+          description: regions
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Tue, 20 Aug 2024 13:52:17 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: '-1'
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      example: 4
+                    id_country:
+                      type: number
+                      example: 2
+                    nombre:
+                      type: string
+                      example: Montevideo
+                example:
+                  - id: 4
+                    id_country: 2
+                    nombre: Montevideo
+                  - id: 5
+                    id_country: 2
+                    nombre: Maldonado
+              examples:
+                regions:
+                  value:
+                    - id: 4
+                      id_country: 2
+                      nombre: Montevideo
+                    - id: 5
+                      id_country: 2
+                      nombre: Maldonado
+      security:
+        - bearerAuth: []
+  /api/countries:
+    get:
+      tags:
+        - System Configuration
+        - countries
+      summary: countries
+      description: countries
+      operationId: countries
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/list-countries:
+    get:
+      tags:
+        - System Configuration
+        - countries
+      summary: list countries
+      description: list countries
+      operationId: listCountries
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/list-regions:
+    get:
+      tags:
+        - System Configuration
+        - countries
+      summary: list regions
+      description: list regions
+      operationId: listRegions
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/list-cities:
+    get:
+      tags:
+        - System Configuration
+        - countries
+      summary: list city
+      description: list city
+      operationId: listCity
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/currencies:
+    get:
+      tags:
+        - System Configuration
+        - currencies
+      summary: Nueva moneda
+      description: Nueva moneda
+      operationId: nuevaMoneda
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID del la moneda (Opcional)
+      responses:
+        '200':
+          description: currencies
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 19 Aug 2024 19:28:50 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: '-1'
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    agency_code:
+                      type: string
+                      example: PES
+                    currency_code:
+                      type: string
+                      example: $
+                    description:
+                      type: string
+                      example: Peso Argentino
+                    id:a
+                      type: number
+                      example: 1
+                    id_country:
+                      type: number
+                      example: 1
+                    iso_code:
+                      type: string
+                      example: ARS
+                    state:
+                      type: string
+                      example: A
+                example:
+                  - agency_code: PES
+                    currency_code: $
+                    description: Peso Argentino
+                    id: 1
+                    id_country: 1
+                    iso_code: ARS
+                    state: A
+              examples:
+                currencies:
+                  value:
+                    - agency_code: PES
+                      currency_code: $
+                      description: Peso Argentino
+                      id: 1
+                      id_country: 1
+                      iso_code: ARS
+                      state: A
+      security:
+        - bearerAuth: []
+  /api/payment-types:
+    get:
+      tags:
+        - System Configuration
+        - payment type
+      summary: payment types
+      description: payment types
+      operationId: paymentTypes
+      parameters:
+        - name: id_pais
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID del país consultado (Opcional)
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '7'
+          description: ID del tipo de pago consultado (Opcional)
+      responses:
+        '200':
+          description: payment types
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Tue, 20 Aug 2024 12:23:15 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: '-1'
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    agency_code:
+                      type: string
+                      example: Contado
+                    code:
+                      type: string
+                      example: CON
+                    description:
+                      type: string
+                      example: Contado
+                    id:
+                      type: number
+                      example: 7
+                    id_country:
+                      type: number
+                      example: 1
+                    state:
+                      type: string
+                      example: A
+                example:
+                  - agency_code: Contado
+                    code: CON
+                    description: Contado
+                    id: 7
+                    id_country: 1
+                    state: A
+              examples:
+                payment types:
+                  value:
+                    - agency_code: Contado
+                      code: CON
+                      description: Contado
+                      id: 7
+                      id_country: 1
+                      state: A
+      security:
+        - bearerAuth: []
+  /api/legal-entities:
+    get:
+      tags:
+        - System Configuration
+        - legal entity
+      summary: legalentities
+      description: legalentities
+      operationId: legalentities
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '3'
+          description: ID del la personería (Opcional)
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID del país consultado (Opcional)
+      responses:
+        '200':
+          description: legalentities
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 19 Aug 2024 20:03:40 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: '-1'
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    agency_code:
+                      type: string
+                      example: F
+                    code:
+                      type: string
+                      example: F
+                    description:
+                      type: string
+                      example: Física
+                    id:
+                      type: number
+                      example: 3
+                    id_country:
+                      type: number
+                      example: 1
+                    state:
+                      type: string
+                      example: A
+                example:
+                  - agency_code: F
+                    code: F
+                    description: Física
+                    id: 3
+                    id_country: 1
+                    state: A
+                  - agency_code: J
+                    code: J
+                    description: Jurídica
+                    id: 4
+                    id_country: 1
+                    state: A
+              examples:
+                legalentities:
+                  value:
+                    - agency_code: F
+                      code: F
+                      description: Física
+                      id: 3
+                      id_country: 1
+                      state: A
+                    - agency_code: J
+                      code: J
+                      description: Jurídica
+                      id: 4
+                      id_country: 1
+                      state: A
+      security:
+        - bearerAuth: []
+  /api/measurement-units:
+    get:
+      tags:
+        - System Configuration
+        - MeasurementUnits
+      summary: Measurement Units
+      description: "Este punto de acceso te permite obtener todas o una de las unidades de medidas utilizadas en comprobantes con la opción de filtrar por país o estado."
+      operationId: measurementunits
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID de la unidad de medida consultada (Opcional)
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID del país consultado (Opcional)
+      responses:
+        '200':
+          description: MeasurementUnits
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 26 Aug 2024 18:34:41 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: '-1'
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    agency_code:
+                      type: string
+                      example: '20'
+                    code:
+                      type: string
+                      example: cm
+                    description:
+                      type: string
+                      example: Centimetro
+                    id:
+                      type: number
+                      example: 1
+                    id_country:
+                      type: number
+                      example: 1
+                    state:
+                      type: string
+                      example: A
+                example:
+                  - agency_code: '20'
+                    code: cm
+                    description: Centimetro
+                    id: 1
+                    id_country: 1
+                    state: A
+              examples:
+                MeasurementUnits:
+                  value:
+                    - agency_code: '20'
+                      code: cm
+                      description: Centimetro
+                      id: 1
+                      id_country: 1
+                      state: A
+      security:
+        - bearerAuth: []
+  /api/tax-identification-documents:
+    get:
+      tags:
+        - System Configuration
+        - Tax Identification Documents
+      summary: Tax Identification Documents
+      description: "Este punto de acceso te permite obtener todas o una de los tipo de documentos utilizados en comprobantes con la opción de filtrar por país o estado."
+      operationId: taxIdentificationDocuments
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '5'
+          description: ID de la unidad de medida consultada (Opcional)
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID del país consultado (Opcional)
+      responses:
+        '200':
+          description: Tax Identification Documents
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 26 Aug 2024 18:36:03 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: '-1'
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    agency_code:
+                      type: string
+                      example: '80'
+                    code:
+                      type: string
+                      example: CUIT
+                    description:
+                      type: string
+                      example: CUIT
+                    id:
+                      type: number
+                      example: 5
+                    id_country:
+                      type: number
+                      example: 1
+                    state:
+                      type: string
+                      example: A
+                example:
+                  - agency_code: '80'
+                    code: CUIT
+                    description: CUIT
+                    id: 5
+                    id_country: 1
+                    state: A
+              examples:
+                Tax Identification Documents:
+                  value:
+                    - agency_code: '80'
+                      code: CUIT
+                      description: CUIT
+                      id: 5
+                      id_country: 1
+                      state: A
+      security:
+        - bearerAuth: []
+  /api/document-types:
+    get:
+      tags:
+        - System Configuration
+        - DocumentType
+      summary: Document Type
+      description: "Este punto de acceso te permite obtener todas o una de los tipo de documentos utilizados en comprobantes con la opción de filtrar por país o estado."
+      operationId: documenttype
+      parameters:
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID del país consultado (Opcional)
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '3'
+          description: ID del tipo de documento consultado (Opcional)
+      responses:
+        '200':
+          description: DocumentType
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 26 Aug 2024 18:38:18 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: '-1'
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    agency_code:
+                      type: number
+                      example: 1
+                    code:
+                      type: string
+                      example: FCA
+                    description:
+                      type: string
+                      example: FACTURAS A
+                    id:
+                      type: number
+                      example: 3
+                    id_country:
+                      type: number
+                      example: 1
+                    print_legend:
+                      type: string
+                      example: Factura
+                    state:
+                      type: string
+                      example: A
+                example:
+                  - agency_code: 1
+                    code: FCA
+                    description: FACTURAS A
+                    id: 3
+                    id_country: 1
+                    print_legend: Factura
+                    state: A
+              examples:
+                DocumentType:
+                  value:
+                    - agency_code: 1
+                      code: FCA
+                      description: FACTURAS A
+                      id: 3
+                      id_country: 1
+                      print_legend: Factura
+                      state: A
+      security:
+        - bearerAuth: []
+  /api/additional-export-info:
+    get:
+      tags:
+        - System Configuration
+        - additionalExportInfo
+      summary: Additional Export Info
+      description: "Este punto de acceso te permite obtener todos o uno de los datos adicionales que se pueden enviar  con la opción de filtrar por país o estado."
+      operationId: additionalexportinfo
+      parameters:
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID del país consultado (Opcional)
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '2'
+          description: ID del dato adicional (Opcional)
+      responses:
+        '200':
+          description: additionalExportInfo
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 26 Aug 2024 18:39:53 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: '-1'
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    data_type:
+                      type: string
+                      example: string
+                    description:
+                      type: string
+                      example: Numero de despacho
+                    id:
+                      type: number
+                      example: 2
+                    id_country:
+                      type: number
+                      example: 1
+                    key:
+                      type: string
+                      example: customs_number
+                    status:
+                      type: string
+                      example: A
+                example:
+                  - data_type: string
+                    description: Numero de despacho
+                    id: 2
+                    id_country: 1
+                    key: customs_number
+                    status: A
+              examples:
+                additionalExportInfo:
+                  value:
+                    - data_type: string
+                      description: Numero de despacho
+                      id: 2
+                      id_country: 1
+                      key: customs_number
+                      status: A
+      security:
+        - bearerAuth: []
+  /api/tax-types:
+    get:
+      tags:
+        - System Configuration
+        - TaxTypes
+      summary: Tax Types
+      description: "Este punto de acceso te permite obtener todos o uno de los tipos de impuestos con la opción de filtrar por país o estado."
+      operationId: taxtypes
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID de tipo de impuesto (Opcional)
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID del país consultado (Opcional)
+      responses:
+        '200':
+          description: taxTypes
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 26 Aug 2024 18:42:15 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: '-1'
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    agency_code:
+                      type: string
+                      example: '5'
+                    code:
+                      type: string
+                      example: iva21
+                    description:
+                      type: string
+                      example: "Impuesto al valor agregado 21%"
+                    id:
+                      type: number
+                      example: 1
+                    id_country:
+                      type: number
+                      example: 1
+                    rate:
+                      type: string
+                      example: '21.0000'
+                    status:
+                      type: string
+                      example: A
+                example:
+                  - agency_code: '5'
+                    code: iva21
+                    description: Impuesto al valor agregado 21%
+                    id: 1
+                    id_country: 1
+                    rate: '21.0000'
+                    status: A
+              examples:
+                taxTypes:
+                  value:
+                    - agency_code: '5'
+                      code: iva21
+                      description: Impuesto al valor agregado 21%
+                      id: 1
+                      id_country: 1
+                      rate: '21.0000'
+                      status: A
+      security:
+        - bearerAuth: []
+  /api/item-additional-info:
+    get:
+      tags:
+        - System Configuration
+        - ItemAdditionalnfo
+      summary: ItemAdditionalnfo
+      description: ItemAdditionalnfo
+      operationId: itemadditionalnfo
+      responses:
+        '200':
+          description: ''
+      security:
+        - bearerAuth: []
+  /api/tax-information:
+    get:
+      tags:
+        - System Configuration
+        - taxInformation
+      summary: Tax Information
+      description: "Este punto de acceso te permite obtener datos impositivos como condición impositiva, fecha de inicio de actividad o actividad económica ejercida con la opción de filtrar por país o estado."
+      operationId: taxinformation
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID del dato (Opcional)
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID del país consultado (Opcional)
+      responses:
+        '200':
+          description: taxInformation
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 26 Aug 2024 18:47:36 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: '-1'
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    data_type:
+                      type: string
+                      example: string
+                    id:
+                      type: number
+                      example: 1
+                    id_country:
+                      type: number
+                      example: 1
+                    key:
+                      type: string
+                      example: tax_condition
+                    scope:
+                      type: string
+                      example: Condicion impositiva
+                    status:
+                      type: string
+                      example: A
+                example:
+                  - data_type: string
+                    id: 1
+                    id_country: 1
+                    key: tax_condition
+                    scope: Condicion impositiva
+                    status: A
+              examples:
+                taxInformation:
+                  value:
+                    - data_type: string
+                      id: 1
+                      id_country: 1
+                      key: tax_condition
+                      scope: Condicion impositiva
+                      status: A
+      security:
+        - bearerAuth: []
+  /api/item-code-types:
+    get:
+      tags:
+        - System Configuration
+        - itemCodeType
+      summary: Item Code Type
+      description: "Este endpoint te permite obtener uno o los diferentes tipos de códigos de producto como EAN-8 o SKU con la opción de filtrar por país o por un código específico."
+      operationId: itemcodetype
+      parameters:
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: '2'
+          description: ID del país consultado (Opcional)
+        - name: code
+          in: query
+          schema:
+            type: string
+            example: ean8
+          description: Nombre del tipo de código (Opcional)
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '3'
+          description: ID del de tipo de código (Opcional)
+      responses:
+        '200':
+          description: itemCodeType
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 26 Aug 2024 18:48:43 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: '-1'
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    agency_code:
+                      type: string
+                      example: GTIN8
+                    code:
+                      type: string
+                      example: ean8
+                    description:
+                      type: string
+                      example: ''
+                    id:
+                      type: number
+                      example: 3
+                    id_country:
+                      type: number
+                      example: 2
+                    status:
+                      type: string
+                      example: A
+                example:
+                  - agency_code: GTIN8
+                    code: ean8
+                    description: ''
+                    id: 3
+                    id_country: 2
+                    status: A
+              examples:
+                itemCodeType:
+                  value:
+                    - agency_code: GTIN8
+                      code: ean8
+                      description: ''
+                      id: 3
+                      id_country: 2
+                      status: A
+      security:
+        - bearerAuth: []
+  /appFacturacionElectronica/include/valida_session2022.php:
+    post:
+      summary: >-
+        https://www.appoctava.cl/appFacturacionElectronica/include/valida_session2022.php
+      description: "Generated from cURL: curl 'https://www.appoctava.cl/appFacturacionElectronica/include/valida_session2022.php' \\\r\n  -H 'Accept: */*' \\\r\n  -H 'Accept-Language: es-ES,es;q=0.9,en;q=0.8' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \\\r\n  -H 'Cookie: PHPSESSID=cj47ta0cddp1fh15q4bo95j996; _ga=GA1.2.757976531.1722869161; _gid=GA1.2.1531298079.1722869161; _ga_H57N1K43MT=GS1.2.1722869161.1.0.1722869161.0.0.0; __zlcmid=1N6mvCsgxApWmW4' \\\r\n  -H 'DNT: 1' \\\r\n  -H 'Origin: https://www.appoctava.cl' \\\r\n  -H 'Referer: https://www.appoctava.cl/appFacturacionElectronica/Modulo_Emision/SubModulo_PanelEmision/' \\\r\n  -H 'Sec-Fetch-Dest: empty' \\\r\n  -H 'Sec-Fetch-Mode: cors' \\\r\n  -H 'Sec-Fetch-Site: same-origin' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'X-Requested-With: XMLHttpRequest' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  --data-raw 'funcion=EnviarCC' ;\r\ncurl 'https://www.appoctava.cl/appFacturacionElectronica/Modulo_Emision/SubModulo_PanelEmision/Controlador/Controlador_PanelEmision.php?funcion=cargarData&Cliente=0&TipoDTE=0&FechaInicial=2024-01-01&FechaFinal=2024-08-05&Folio=0&Filtro=1&respuestaSII=D&sEcho=1&iColumns=12&sColumns=%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&mDataProp_3=3&mDataProp_4=4&mDataProp_5=5&mDataProp_6=6&mDataProp_7=7&mDataProp_8=8&mDataProp_9=9&mDataProp_10=10&mDataProp_11=11&_=1722871521797' \\\r\n  -H 'Accept: application/json, text/javascript, */*; q=0.01' \\\r\n  -H 'Accept-Language: es-ES,es;q=0.9,en;q=0.8' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Cookie: PHPSESSID=cj47ta0cddp1fh15q4bo95j996; _ga=GA1.2.757976531.1722869161; _gid=GA1.2.1531298079.1722869161; _ga_H57N1K43MT=GS1.2.1722869161.1.0.1722869161.0.0.0; __zlcmid=1N6mvCsgxApWmW4' \\\r\n  -H 'DNT: 1' \\\r\n  -H 'Referer: https://www.appoctava.cl/appFacturacionElectronica/Modulo_Emision/SubModulo_PanelEmision/' \\\r\n  -H 'Sec-Fetch-Dest: empty' \\\r\n  -H 'Sec-Fetch-Mode: cors' \\\r\n  -H 'Sec-Fetch-Site: same-origin' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'X-Requested-With: XMLHttpRequest' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' ;\r\ncurl 'https://bam.nr-data.net/events/1/fb063320b5?a=590762806&v=1.263.0&to=MwRSZRBUXxZSAUZdXgpOZUMLGlAVQyRTV0URE1FSC1pfIF8HUUBDCw9ZUgMafwBETVtaVQEZHkEKRQ%3D%3D&rst=296802&ck=0&s=9b96f42fb8234e63&ref=https://www.appoctava.cl/appFacturacionElectronica/New/&ptid=f3cffba3b848f3bb' \\\r\n  -H 'Accept: */*' \\\r\n  -H 'Accept-Language: es-ES,es;q=0.9,en;q=0.8' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: text/plain;charset=UTF-8' \\\r\n  -H 'Cookie: JSESSIONID=bf3760aa1e3b113c' \\\r\n  -H 'DNT: 1' \\\r\n  -H 'Origin: https://www.appoctava.cl' \\\r\n  -H 'Referer: https://www.appoctava.cl/' \\\r\n  -H 'Sec-Fetch-Dest: empty' \\\r\n  -H 'Sec-Fetch-Mode: no-cors' \\\r\n  -H 'Sec-Fetch-Site: cross-site' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  --data-raw $'bel.6;e,\\'cls,,8;5,\\'metricId,\\'v3-1722871518759-6092510992886;9,\\'largestShiftTarget;9,\\'largestShiftTime;9,\\'largestShiftValue;9,\\'loadState;5,\\'net-etype,\\'4g;6,\\'net-rtt,100.;6,\\'net-dlink,1.95' ;\r\ncurl 'https://bam.nr-data.net/events/1/fb063320b5?a=590762806&v=1.263.0&to=MwRSZRBUXxZSAUZdXgpOZUMLGlAVQyRTV0URE1FSC1pfIF8HUUBDCw9ZUgMafApXF15bbiEMWUILWl9KYBdQeV4AFFxePWVQC1YOd1lYFwhfX01cXwFWGhxEWRQ%3D&rst=293699&ck=0&s=9b96f42fb8234e63&ref=https://www.appoctava.cl/appFacturacionElectronica/Modulo_Emision/SubModulo_PanelEmision/&ptid=8493f9a661b04ac1' \\\r\n  -H 'Accept: */*' \\\r\n  -H 'Accept-Language: es-ES,es;q=0.9,en;q=0.8' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Content-Type: text/plain;charset=UTF-8' \\\r\n  -H 'Cookie: JSESSIONID=bf3760aa1e3b113c' \\\r\n  -H 'DNT: 1' \\\r\n  -H 'Origin: https://www.appoctava.cl' \\\r\n  -H 'Referer: https://www.appoctava.cl/' \\\r\n  -H 'Sec-Fetch-Dest: empty' \\\r\n  -H 'Sec-Fetch-Mode: no-cors' \\\r\n  -H 'Sec-Fetch-Site: cross-site' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"' \\\r\n  --data-raw $'bel.6;e,\\'inp,1k,9;5,\\'metricId,\\'v3-1722871521829-1603304641315;5,\\'eventTarget,\\'#buscar;5,\\'eventType,\\'click;6,\\'eventTime,233596.69999998808;5,\\'loadState,\\'complete;5,\\'net-etype,\\'4g;6,\\'net-rtt,100.;6,\\'net-dlink,1.95;6,\\'cls,0.00003380487480905891;e,e,0,8;5,1,\\'v3-1722871521830-1268095298551;5,\\'largestShiftTarget,\\'#tabla_emision;6,\\'largestShiftTime,428.19999998807907;6,\\'largestShiftValue,0.00003380487480905891;5,8,\\'dom-content-loaded;5,a,b;6,c,100.;6,d,1.95'"
+      operationId: httpsWwwAppoctavaClAppfacturacionelectronicaIncludeValidaSession2022Php
+      parameters:
+        - name: accept-language
+          in: header
+          schema:
+            type: string
+            example: es-ES,es;q=0.9,en;q=0.8
+        - name: connection
+          in: header
+          schema:
+            type: string
+            example: keep-alive
+        - name: cookie
+          in: header
+          schema:
+            type: string
+            example: >-
+              PHPSESSID=cj47ta0cddp1fh15q4bo95j996;
+              _ga=GA1.2.757976531.1722869161; _gid=GA1.2.1531298079.1722869161;
+              _ga_H57N1K43MT=GS1.2.1722869161.1.0.1722869161.0.0.0;
+              __zlcmid=1N6mvCsgxApWmW4
+        - name: dnt
+          in: header
+          schema:
+            type: string
+            example: '1'
+        - name: origin
+          in: header
+          schema:
+            type: string
+            example: https://www.appoctava.cl
+        - name: referer
+          in: header
+          schema:
+            type: string
+            example: >-
+              https://www.appoctava.cl/appFacturacionElectronica/Modulo_Emision/SubModulo_PanelEmision/
+        - name: sec-fetch-dest
+          in: header
+          schema:
+            type: string
+            example: empty
+        - name: sec-fetch-mode
+          in: header
+          schema:
+            type: string
+            example: cors
+        - name: sec-fetch-site
+          in: header
+          schema:
+            type: string
+            example: same-origin
+        - name: user-agent
+          in: header
+          schema:
+            type: string
+            example: >-
+              Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+              (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36
+        - name: x-requested-with
+          in: header
+          schema:
+            type: string
+            example: XMLHttpRequest
+        - name: sec-ch-ua
+          in: header
+          schema:
+            type: string
+            example: '"Not)A;Brand";v="99", "Google Chrome";v="127", "Chromium";v="127"'
+        - name: sec-ch-ua-mobile
+          in: header
+          schema:
+            type: string
+            example: '?0'
+        - name: sec-ch-ua-platform
+          in: header
+          schema:
+            type: string
+            example: '"Windows"'
+      requestBody:
+        content:
+          text/plain:
+            examples:
+              https://www.appoctava.cl/appFacturacionElectronica/include/valida_session2022.php:
+                value: >-
+                  funcion=EnviarCC&bel.6;e,'cls,,8;5,'metricId,'v3-1722871518759-6092510992886;9,'largestShiftTarget;9,'largestShiftTime;9,'largestShiftValue;9,'loadState;5,'net-etype,'4g;6,'net-rtt,100.;6,'net-dlink,1.95&bel.6;e,'inp,1k,9;5,'metricId,'v3-1722871521829-1603304641315;5,'eventTarget,'#buscar;5,'eventType,'click;6,'eventTime,233596.69999998808;5,'loadState,'complete;5,'net-etype,'4g;6,'net-rtt,100.;6,'net-dlink,1.95;6,'cls,0.00003380487480905891;e,e,0,8;5,1,'v3-1722871521830-1268095298551;5,'largestShiftTarget,'#tabla_emision;6,'largestShiftTime,428.19999998807907;6,'largestShiftValue,0.00003380487480905891;5,8,'dom-content-loaded;5,a,b;6,c,100.;6,d,1.95
+      responses:
+        '200':
+          description: ''
+  /appFacturacionElectronica/Modulo_Emision/SubModulo_PanelEmision/Controlador/Controlador_PanelEmision.php:
+    get:
+      summary: >-
+        https://www.appoctava.cl/appFacturacionElectronica/Modulo_Emision/SubModulo_PanelEmision/Controlador/Controlador_PanelEmision.php?funcion=cargarData&Cliente=0&TipoDTE=0&FechaInicial=2024-01-01&FechaFinal=2024-08-05&Folio=0&Filtro=1&respuestaSII=D&sEcho=1&
+      description: "Generated from cURL: curl 'https://www.appoctava.cl/appFacturacionElectronica/Modulo_Emision/SubModulo_PanelEmision/Controlador/Controlador_PanelEmision.php?funcion=cargarData&Cliente=0&TipoDTE=0&FechaInicial=2024-01-01&FechaFinal=2024-08-05&Folio=0&Filtro=1&respuestaSII=D&sEcho=1&iColumns=12&sColumns=%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&mDataProp_3=3&mDataProp_4=4&mDataProp_5=5&mDataProp_6=6&mDataProp_7=7&mDataProp_8=8&mDataProp_9=9&mDataProp_10=10&mDataProp_11=11&_=1722871521797' \\\r\n  -H 'Accept: application/json, text/javascript, */*; q=0.01' \\\r\n  -H 'Accept-Language: es-ES,es;q=0.9,en;q=0.8' \\\r\n  -H 'Connection: keep-alive' \\\r\n  -H 'Cookie: PHPSESSID=cj47ta0cddp1fh15q4bo95j996; _ga=GA1.2.757976531.1722869161; _gid=GA1.2.1531298079.1722869161; _ga_H57N1K43MT=GS1.2.1722869161.1.0.1722869161.0.0.0; __zlcmid=1N6mvCsgxApWmW4' \\\r\n  -H 'DNT: 1' \\\r\n  -H 'Referer: https://www.appoctava.cl/appFacturacionElectronica/Modulo_Emision/SubModulo_PanelEmision/' \\\r\n  -H 'Sec-Fetch-Dest: empty' \\\r\n  -H 'Sec-Fetch-Mode: cors' \\\r\n  -H 'Sec-Fetch-Site: same-origin' \\\r\n  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36' \\\r\n  -H 'X-Requested-With: XMLHttpRequest' \\\r\n  -H 'sec-ch-ua: \"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"' \\\r\n  -H 'sec-ch-ua-mobile: ?0' \\\r\n  -H 'sec-ch-ua-platform: \"Windows\"'"
+      operationId: >-
+        httpsWwwAppoctavaClAppfacturacionelectronicaModuloEmisionSubmoduloPanelemisionControladorControladorPanelemisionPhpFuncionCargardataCliente0Tipodte0Fechainicial20240101Fechafinal20240805Folio0Filtro1RespuestasiiDSecho1
+      parameters:
+        - name: funcion
+          in: query
+          schema:
+            type: string
+            example: cargarData
+        - name: Cliente
+          in: query
+          schema:
+            type: string
+            example: '0'
+        - name: TipoDTE
+          in: query
+          schema:
+            type: string
+            example: '0'
+        - name: FechaInicial
+          in: query
+          schema:
+            type: string
+            example: '2024-01-01'
+        - name: FechaFinal
+          in: query
+          schema:
+            type: string
+            example: '2024-08-05'
+        - name: Folio
+          in: query
+          schema:
+            type: string
+            example: '0'
+        - name: Filtro
+          in: query
+          schema:
+            type: string
+            example: '1'
+        - name: respuestaSII
+          in: query
+          schema:
+            type: string
+            example: D
+        - name: sEcho
+          in: query
+          schema:
+            type: string
+            example: '1'
+        - name: iColumns
+          in: query
+          schema:
+            type: string
+            example: '12'
+        - name: sColumns
+          in: query
+          schema:
+            type: string
+            example: '%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C'
+        - name: iDisplayStart
+          in: query
+          schema:
+            type: string
+            example: '0'
+        - name: iDisplayLength
+          in: query
+          schema:
+            type: string
+            example: '10'
+        - name: mDataProp_0
+          in: query
+          schema:
+            type: string
+            example: '0'
+        - name: mDataProp_1
+          in: query
+          schema:
+            type: string
+            example: '1'
+        - name: mDataProp_2
+          in: query
+          schema:
+            type: string
+            example: '2'
+        - name: mDataProp_3
+          in: query
+          schema:
+            type: string
+            example: '3'
+        - name: mDataProp_4
+          in: query
+          schema:
+            type: string
+            example: '4'
+        - name: mDataProp_5
+          in: query
+          schema:
+            type: string
+            example: '5'
+        - name: mDataProp_6
+          in: query
+          schema:
+            type: string
+            example: '6'
+        - name: mDataProp_7
+          in: query
+          schema:
+            type: string
+            example: '7'
+        - name: mDataProp_8
+          in: query
+          schema:
+            type: string
+            example: '8'
+        - name: mDataProp_9
+          in: query
+          schema:
+            type: string
+            example: '9'
+        - name: mDataProp_10
+          in: query
+          schema:
+            type: string
+            example: '10'
+        - name: mDataProp_11
+          in: query
+          schema:
+            type: string
+            example: '11'
+        - name: _
+          in: query
+          schema:
+            type: string
+            example: '1722871521797'
+        - name: accept-language
+          in: header
+          schema:
+            type: string
+            example: es-ES,es;q=0.9,en;q=0.8
+        - name: connection
+          in: header
+          schema:
+            type: string
+            example: keep-alive
+        - name: cookie
+          in: header
+          schema:
+            type: string
+            example: >-
+              PHPSESSID=cj47ta0cddp1fh15q4bo95j996;
+              _ga=GA1.2.757976531.1722869161; _gid=GA1.2.1531298079.1722869161;
+              _ga_H57N1K43MT=GS1.2.1722869161.1.0.1722869161.0.0.0;
+              __zlcmid=1N6mvCsgxApWmW4
+        - name: dnt
+          in: header
+          schema:
+            type: string
+            example: '1'
+        - name: referer
+          in: header
+          schema:
+            type: string
+            example: >-
+              https://www.appoctava.cl/appFacturacionElectronica/Modulo_Emision/SubModulo_PanelEmision/
+        - name: sec-fetch-dest
+          in: header
+          schema:
+            type: string
+            example: empty
+        - name: sec-fetch-mode
+          in: header
+          schema:
+            type: string
+            example: cors
+        - name: sec-fetch-site
+          in: header
+          schema:
+            type: string
+            example: same-origin
+        - name: user-agent
+          in: header
+          schema:
+            type: string
+            example: >-
+              Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+              (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36
+        - name: x-requested-with
+          in: header
+          schema:
+            type: string
+            example: XMLHttpRequest
+        - name: sec-ch-ua
+          in: header
+          schema:
+            type: string
+            example: '"Not)A;Brand";v="99", "Google Chrome";v="127", "Chromium";v="127"'
+        - name: sec-ch-ua-mobile
+          in: header
+          schema:
+            type: string
+            example: '?0'
+        - name: sec-ch-ua-platform
+          in: header
+          schema:
+            type: string
+            example: '"Windows"'
+      responses:
+        '200':
+          description: ''
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: Access
+  - name: Login
+  - name: Registration
+  - name: Companies
+  - name: companies
+  - name: Documents
+  - name: invoices
+  - name: System Configuration
+  - name: countries
+  - name: currencies
+  - name: payment type
+  - name: legal entity
+  - name: MeasurementUnits
+  - name: Tax Identification Documents
+  - name: DocumentType
+  - name: additionalExportInfo
+  - name: TaxTypes
+  - name: ItemAdditionalnfo
+  - name: taxInformation
+  - name: itemCodeType
