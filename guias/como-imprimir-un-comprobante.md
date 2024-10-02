@@ -1,0 +1,2 @@
+# Cómo imprimir un comprobante
+

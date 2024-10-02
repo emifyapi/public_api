@@ -1,14 +1,9 @@
----
-description: En esta sección te explicamos cómo autenticarte.
----
-
 # Autenticación
 
 ***
 
-Al autenticarte podrás crear empresas y consultar endpoint
+Autenticarte te permite crear empresas y configurarlas.
 
-{% swagger src=".gitbook/assets/auth (1).yaml" path="/api/login" method="post" %}
-[auth (1).yaml](<.gitbook/assets/auth (1).yaml>)
+{% swagger src=".gitbook/assets/GETCertifAPIKs.yaml" path="/api/login" method="post" %}
+[GETCertifAPIKs.yaml](.gitbook/assets/GETCertifAPIKs.yaml)
 {% endswagger %}
-

@@ -9,39 +9,32 @@ Antes de comenzar, necesitarás una cuenta registrada y obtener un Bearer Token.
 1. **Registro**: para registrar una cuenta, puedes hacerlo desde nuestra plataforma.
 2. **Generar Bearer Token**: Una vez registrado, puedes generar el Token a través de Login.
 
-#### 2. Autenticación
+#### 2. Seleccionar entorno:
+
+* Producción: es el ambiente para gestionar tus operaciones diarias y generan comprobantes válidos ante el organismo. Para usar este entorno, configurar `url_base: https://emify.com/`.
+* Sandbox: es un ambiente de pruebas que se puede utilizar para probar el flujo de creación de empresas y emisión e impresión de comprobantes. Los comprobantes generados en este ambiente no son válidos ante el organismo. Para usar este entorno, configurar `url_base: https://sandbox.emify.com/`
+
+#### 4. Autenticación
 
 Para acceder a la API, todas las solicitudes deben incluir el Bearer Token en el encabezado de la solicitud. Aquí te mostramos un ejemplo utilizando `cURL`:
 
 ```bash
-bashCopiar códigocurl -X GET "{{url}}/v1/ejemplo" \
--H "Authorization: Bearer TU_TOKEN"
+curl --location 'https://facttuapi.contabilium.com/api/login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email":"email@example.com",
+    "password":"123456"
+}'
 ```
 
-#### 3. Realizar tu Primera Solicitud
+#### 5. Dar de alta una empresa:
 
-Para realizar tu primera solicitud, prueba el siguiente endpoint que devuelve información básica de tu cuenta:
+Una vez autenticado, podrás crear una empresa para obtener una API Key y realizar operaciones con esta. Para más información, consultar la sección Cómo dar de alta una empresa.
 
-```bash
-bashCopiar códigocurl -X GET "https://api.tuempresa.com/v1/account" \
--H "Authorization: Bearer TU_API_KEY"
-```
+#### 6. Explora los Endpoints:
 
-Si todo está configurado correctamente, deberías recibir una respuesta similar a esta:
+Con tu API Key puedes explora los demás endpoints disponibles en la sección de Referencias API. Allí encontrarás detalles sobre cómo acceder a diferentes recursos y realizar operaciones más avanzadas.
 
-```json
-jsonCopiar código{
-  "id": "12345",
-  "name": "John Doe",
-  "email": "john.doe@example.com",
-  "status": "active"
-}
-```
-
-#### 4. Explora los Endpoints
-
-Ahora que has realizado tu primera solicitud, explora los demás endpoints disponibles en la sección de Referencias API. Aquí encontrarás detalles sobre cómo acceder a diferentes recursos y realizar operaciones más avanzadas.
-
-#### 5. Soporte
+#### 6. Soporte:
 
 Si encuentras algún problema o tienes preguntas, revisa nuestra sección de preguntas frecuentes o contacta a nuestro equipo de soporte.

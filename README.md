@@ -1,12 +1,10 @@
 # Introducción
 
-Introducción a la API
-
 Bienvenidos a la documentación oficial de nuestra API. Esta API está diseñada para proporcionar a los desarrolladores una manera fácil y eficiente de interactuar con nuestras plataformas, permitiendo la integración de funcionalidades clave en sus propias aplicaciones y servicios.
 
 #### Propósito
 
-El propósito de esta API es poder registrar usuarios, empresas y operaciones de facturación, permitiendo la integración con nuestros sistemas a través de un conjunto consistente de endpoints. [Con un enfoque en la simplicidad y la seguridad, nuestra API está diseñada para ser robusta y flexible, adaptándose a las necesidades de diferentes tipos de aplicaciones, desde startups hasta grandes empresas.](#user-content-fn-1)[^1]
+El propósito de esta API es poder registrar usuarios, empresas y operaciones de facturación, permitiendo la integración con nuestros sistemas a través de un conjunto consistente de endpoints. Con un enfoque en la simplicidad y la seguridad, nuestra API está diseñada para ser robusta y flexible, adaptándose a las necesidades de diferentes tipos de aplicaciones, desde startups hasta grandes empresas.
 
 #### Estructura
 
@@ -23,15 +21,9 @@ La documentación está organizada de manera que te guiará desde los conceptos 
 
 #### Audiencia
 
-[Esta documentación está dirigida a desarrolladores, ingenieros de software y equipos técnicos que buscan integrar nuestras funcionalidades en sus soluciones](#user-content-fn-2)[^2]. Se asume un conocimiento básico de RESTful APIs y del formato JSON.
+Esta documentación está dirigida a desarrolladores, ingenieros de software y equipos técnicos que buscan integrar nuestras funcionalidades en sus soluciones. Se asume un conocimiento básico de RESTful APIs y del formato JSON.
 
 #### Comenzando
 
 Si eres nuevo en nuestra API, te recomendamos comenzar con la sección de "Cómo empezar" para familiarizarte con los conceptos básicos y realizar tu primera llamada a la API en minutos.
-
-
-
-[^1]: Esto describe el alcance de la API y a quién está dirigida sus servicios
-
-[^2]: A quién está dirigida la docu
 

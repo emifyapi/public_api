@@ -4,8 +4,7 @@ info:
   version: 1.0.0
   contact: {}
 servers:
-  - url: "{{url}}"
-  - url: https://www.appoctava.cl
+  - url: '{{base_url}}'
 paths:
   /api/login:
     post:
@@ -26,20 +25,20 @@ paths:
                   example: alvaroamav96@gmail.com
                 password:
                   type: string
-                  example: "123456"
+                  example: '123456'
             examples:
               Login:
                 value:
                   email: alvaroamav96@gmail.com
-                  password: "123456"
+                  password: '123456'
       responses:
-        "200":
+        '200':
           description: Login
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -67,7 +66,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -95,13 +94,13 @@ paths:
       description: Logout
       operationId: logout
       responses:
-        "200":
+        '200':
           description: Logout
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -129,7 +128,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -171,20 +170,20 @@ paths:
                   example: test@example.com
                 password:
                   type: string
-                  example: "123456"
+                  example: '123456'
             examples:
               Registration:
                 value:
                   email: test@example.com
-                  password: "123456"
+                  password: '123456'
       responses:
-        "201":
+        '201':
           description: Registration
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -212,7 +211,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -280,10 +279,10 @@ paths:
                   example: Chile SRL
                 start_activities_date:
                   type: string
-                  example: "2023-01-01"
+                  example: '2023-01-01'
                 tax_identifier:
                   type: string
-                  example: "434234"
+                  example: '434234'
                 tax_identifier_name:
                   type: string
                   example: RUT
@@ -292,12 +291,12 @@ paths:
                 value:
                   id_currency: 5
                   legal_name: Chile SRL
-                  start_activities_date: "2023-01-01"
-                  tax_identifier: "434234"
+                  start_activities_date: '2023-01-01'
+                  tax_identifier: '434234'
                   tax_identifier_name: RUT
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
   /api/companies/apikey:
@@ -319,18 +318,18 @@ paths:
                   example: key para empresa
                 id_company:
                   type: string
-                  example: "33"
+                  example: '33'
             examples:
               New ApiKey:
                 value:
                   description: key para empresa
-                  id_company: "33"
+                  id_company: '33'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
-  /api/companies/16/certificates:
+  /api/companies/{id_compary}/certificates:
     post:
       tags:
         - Companies
@@ -352,19 +351,25 @@ paths:
                   example: Production
                 expiration_date:
                   type: string
-                  example: "2025-03-22"
+                  example: '2025-03-22'
                 from_date:
                   type: string
-                  example: "2023-03-23"
+                  example: '2023-03-23'
                 password:
                   type: string
-                  example: ""
+                  example: ''
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
-  /api/companies/24/logo:
+    parameters:
+      - name: id_compary
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/companies/{id_compary}/logo:
     post:
       tags:
         - Companies
@@ -382,11 +387,17 @@ paths:
                   type: string
                   format: binary
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
-  /api/companies/33/enumeration/upload:
+    parameters:
+      - name: id_compary
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/companies/{id_company}/enumeration/upload:
     post:
       tags:
         - Companies
@@ -405,12 +416,18 @@ paths:
                   format: binary
                 id_document_type:
                   type: string
-                  example: "55"
+                  example: '55'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - apiKey: []
+    parameters:
+      - name: id_company
+        in: path
+        required: true
+        schema:
+          type: string
   /api/companies/33/enumeration/4/config:
     put:
       tags:
@@ -433,8 +450,8 @@ paths:
                 value:
                   enumeration_starts_from: 5201
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
   /api/companies/33/enumeration/4:
@@ -459,8 +476,8 @@ paths:
                 value:
                   enumeration_starts_from: 5201
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
   /api/companies/29:
@@ -482,7 +499,7 @@ paths:
                   example: 1
                 decimal_separator:
                   type: string
-                  example: ","
+                  example: ','
                 thousand_separator:
                   type: string
                   example: .
@@ -490,11 +507,11 @@ paths:
               Update company settings:
                 value:
                   decimal_places: 1
-                  decimal_separator: ","
+                  decimal_separator: ','
                   thousand_separator: .
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - apiKey: []
   /api/companies/33/enumeration/list:
@@ -506,8 +523,8 @@ paths:
       description: Enumeration Config
       operationId: enumerationConfig
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - apiKey: []
   /api/certificates/16/list:
@@ -523,15 +540,15 @@ paths:
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
         - name: status
           in: query
           schema:
             type: string
             example: A
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
   /api/list-api-keys/apikeys/29/list:
@@ -543,8 +560,8 @@ paths:
       description: Api keys
       operationId: apiKeys
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
   /api/invoices:
@@ -583,7 +600,7 @@ paths:
                         example: 1
                       invoice_date:
                         type: string
-                        example: "2024-06-19 08:00:00"
+                        example: '2024-06-19 08:00:00'
                       invoice_type:
                         type: string
                         example: FCA
@@ -592,7 +609,7 @@ paths:
                         example: 2507
                   example:
                     - branch_office: 1
-                      invoice_date: "2024-06-19 08:00:00"
+                      invoice_date: '2024-06-19 08:00:00'
                       invoice_type: FCA
                       number: 2507
                 branch_office:
@@ -600,7 +617,7 @@ paths:
                   example: 1
                 concept:
                   type: string
-                  example: "3"
+                  example: '3'
                 currency:
                   type: object
                   properties:
@@ -612,10 +629,10 @@ paths:
                       example: 1
                 external_reference:
                   type: string
-                  example: "103513337"
+                  example: '103513337'
                 invoice_date:
                   type: string
-                  example: "2024-06-18 08:00:00"
+                  example: '2024-06-18 08:00:00'
                 issuer:
                   type: object
                   properties:
@@ -636,7 +653,7 @@ paths:
                           example: Ciudad de Buenos Aires
                     document_number:
                       type: string
-                      example: "20309807430"
+                      example: '20309807430'
                     document_type:
                       type: string
                       example: CUIT
@@ -720,7 +737,7 @@ paths:
                   example: Nuestro horario de atención es de Lunes a Sábado de 9 a 20hs
                 payment_due_date:
                   type: string
-                  example: "2024-06-19"
+                  example: '2024-06-19'
                 payment_method:
                   type: object
                   properties:
@@ -741,13 +758,13 @@ paths:
                           example: ARG
                         phone:
                           type: string
-                          example: "123456"
+                          example: '123456'
                         state:
                           type: string
                           example: Ciudad de Buenos Aires
                     document_number:
                       type: string
-                      example: "23123123123"
+                      example: '23123123123'
                     document_type:
                       type: string
                       example: CUIT
@@ -765,10 +782,10 @@ paths:
                           example: value1
                 service_end_date:
                   type: string
-                  example: "2024-06-19 23:59:59"
+                  example: '2024-06-19 23:59:59'
                 service_start_date:
                   type: string
-                  example: "2024-06-11 00:00:00"
+                  example: '2024-06-11 00:00:00'
                 totals:
                   type: object
                   properties:
@@ -800,12 +817,12 @@ paths:
               Create Invoice:
                 value:
                   branch_office: 1
-                  concept: "3"
+                  concept: '3'
                   currency:
                     code: ARS
                     exchange_rate: 1
-                  external_reference: "103513046"
-                  invoice_date: "2024-08-19 08:00:00"
+                  external_reference: '103513046'
+                  invoice_date: '2024-08-19 08:00:00'
                   invoice_type: FCA
                   issuer:
                     address:
@@ -813,16 +830,16 @@ paths:
                       country: AR
                       phone: 0810-1566666666
                       region: AR-C
-                    document_number: "20954058310"
+                    document_number: '20954058310'
                     document_type: CUIT
                     legal_name: Demo SRL
                     tax_information:
-                      start_activities_date: "2024-05-11 15:00:00"
+                      start_activities_date: '2024-05-11 15:00:00'
                       tax_condition: value1
                   items:
                     - code:
                         type: sku
-                        value: "898765"
+                        value: '898765'
                       code_unit_of_measure: u
                       description: A PRODUCTO
                       discount_amount: 0
@@ -833,7 +850,7 @@ paths:
                           type: iva21
                       unit_price: 95
                     - code_unit_of_measure: u
-                      description: "prod b "
+                      description: 'prod b '
                       discount_amount: 10
                       quantity: 3
                       taxes:
@@ -854,7 +871,7 @@ paths:
                           type: iva21
                       unit_price: 13000
                   observations: Nuestro horario de atención es de Lunes a Sábado de 9 a 20hs
-                  payment_due_date: "2024-08-19"
+                  payment_due_date: '2024-08-19'
                   payment_method:
                     code: CON
                     description: Cuenta corriente
@@ -862,16 +879,16 @@ paths:
                     address:
                       address: av corrientes 848
                       country: AR
-                      phone: "123456"
+                      phone: '123456'
                       region: AR-C
-                    document_number: "23123123123"
+                    document_number: '23123123123'
                     document_type: CUIT
                     legal_name: ADADASD
                     tax_information:
-                      start_activities_date: "2024-05-11 15:00:00"
+                      start_activities_date: '2024-05-11 15:00:00'
                       tax_condition: value1
-                  service_end_date: "2024-08-19 23:59:59"
-                  service_start_date: "2024-08-06 00:00:00"
+                  service_end_date: '2024-08-19 23:59:59'
+                  service_start_date: '2024-08-06 00:00:00'
                   totals:
                     discount: 30
                     sub_total: 13395
@@ -887,23 +904,23 @@ paths:
                 value:
                   billing_reference:
                     - branch_office: 1
-                      invoice_date: "2024-06-19 08:00:00"
+                      invoice_date: '2024-06-19 08:00:00'
                       invoice_type: FCA
                       number: 2507
                   branch_office: 1
-                  concept: "3"
+                  concept: '3'
                   currency:
                     code: ARS
                     exchange_rate: 1
-                  external_reference: "103513337"
-                  invoice_date: "2024-06-18 08:00:00"
+                  external_reference: '103513337'
+                  invoice_date: '2024-06-18 08:00:00'
                   issuer:
                     address:
                       address: SUIPACHA 250 1
                       country: ARG
                       phone: 0810-1566666666
                       state: Ciudad de Buenos Aires
-                    document_number: "20309807430"
+                    document_number: '20309807430'
                     document_type: CUIT
                     legal_name: Demo SRL
                     tax_information:
@@ -924,23 +941,23 @@ paths:
                       unit_price: 13000
                   number: 2458
                   observations: Nuestro horario de atención es de Lunes a Sábado de 9 a 20hs
-                  payment_due_date: "2024-06-19"
+                  payment_due_date: '2024-06-19'
                   payment_method:
                     code: contado
                     description: Cuenta corriente
                   recipient:
                     address:
                       country: ARG
-                      phone: "123456"
+                      phone: '123456'
                       state: Ciudad de Buenos Aires
-                    document_number: "23123123123"
+                    document_number: '23123123123'
                     document_type: CUIT
                     legal_name: ADADASD
                     tax_information:
                       start_activities_date: value2
                       tax_condition: value1
-                  service_end_date: "2024-06-19 23:59:59"
-                  service_start_date: "2024-06-11 00:00:00"
+                  service_end_date: '2024-06-19 23:59:59'
+                  service_start_date: '2024-06-11 00:00:00'
                   totals:
                     sub_total: 13000
                     taxes:
@@ -949,8 +966,8 @@ paths:
                         type: iva21
                     total: 15730
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - apiKey: []
         - bearerAuth: []
@@ -970,22 +987,22 @@ paths:
               properties:
                 cancellation_date:
                   type: string
-                  example: "2024-06-19"
+                  example: '2024-06-19'
                 observations:
                   type: string
                   example: El comprobante se emitio por error
                 reason_code:
                   type: string
-                  example: "002"
+                  example: '002'
             examples:
               void:
                 value:
-                  cancellation_date: "2024-06-19"
+                  cancellation_date: '2024-06-19'
                   observations: El comprobante se emitio por error
-                  reason_code: "002"
+                  reason_code: '002'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - apiKey: []
   /api/invoices/66c3511cbb4f9ca3c20f6f72:
@@ -1001,10 +1018,10 @@ paths:
           application/json:
             examples:
               Get Invoice:
-                value: ""
+                value: ''
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - apiKey: []
   /api/invoices/list:
@@ -1020,17 +1037,17 @@ paths:
           in: query
           schema:
             type: string
-            example: "2024-06-19"
+            example: '2024-06-19'
         - name: invoice_date_to
           in: query
           schema:
             type: string
-            example: "2024-06-20"
+            example: '2024-06-20'
         - name: recipient_document_number
           in: query
           schema:
             type: string
-            example: "231231245345"
+            example: '231231245345'
         - name: status
           in: query
           schema:
@@ -1041,10 +1058,10 @@ paths:
           application/json:
             examples:
               Get Invoices by Filters:
-                value: ""
+                value: ''
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - apiKey: []
   /api/backoffice/invoices/list:
@@ -1060,10 +1077,10 @@ paths:
           application/json:
             examples:
               Get backoffice Invoices by Filters:
-                value: ""
+                value: ''
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
   /api/invoices/66ba413e9f21bc611a022ef4/download:
@@ -1075,8 +1092,8 @@ paths:
       description: Download invoice
       operationId: downloadInvoice
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - apiKey: []
   /api/comprobantes/660448c05915e7c71901aef2/sendbyemail:
@@ -1088,8 +1105,8 @@ paths:
       description: Send by Email
       operationId: sendByEmail
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
   /api/regions:
@@ -1098,23 +1115,23 @@ paths:
         - System Configuration
         - countries
       summary: Regions
-      description: Este endpoint te permite obtener todos las provincias/regiones/estados con la opción de filtrar por país.
+      description: "Este endpoint te permite obtener información de uno o todas las provincias/regiones"
       operationId: regions
       parameters:
         - name: id_country
           in: query
           schema:
             type: string
-            example: "2"
-          description: ID del país consultado
+            example: '2'
+          description: ID del país consultado (Opcional)
       responses:
-        "200":
+        '200':
           description: regions
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -1142,7 +1159,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -1187,16 +1204,16 @@ paths:
         - System Configuration
         - countries
       summary: Countries
-      description: Este endpoint te permite obtener parámetros asociados a cada país.
+      description: "Este endpoint te permite obtener información de los países. Esta información se suele utilizar en la emisión de comprobantes de exportación."
       operationId: countries
       responses:
-        "200":
+        '200':
           description: countries
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -1224,7 +1241,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -1284,8 +1301,8 @@ paths:
       description: list countries
       operationId: listCountries
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
   /api/list-regions:
@@ -1297,8 +1314,8 @@ paths:
       description: list regions
       operationId: listRegions
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
   /api/list-cities:
@@ -1310,8 +1327,8 @@ paths:
       description: list city
       operationId: listCity
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       security:
         - bearerAuth: []
   /api/currencies:
@@ -1319,24 +1336,30 @@ paths:
       tags:
         - System Configuration
         - currencies
-      summary: Nueva moneda
-      description: Nueva moneda
-      operationId: nuevaMoneda
+      summary: Currencies
+      description: "Este endpoint te permite obtener información de una o todas las monedas"
+      operationId: currencies
       parameters:
         - name: id
           in: query
           schema:
             type: string
-            example: "1"
-          description: ID del la moneda (Opcional)
+            example: '2'
+          description: ID de la moneda consultada (Opcional)
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: '2'
+          description: ID país consultado (Opcional)
       responses:
-        "200":
+        '200':
           description: currencies
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -1364,7 +1387,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -1423,29 +1446,29 @@ paths:
         - System Configuration
         - payment type
       summary: Payment Types
-      description: Este endpoint te permite obtener todas las formas de pago con la opción de filtrar por país.
+      description: "Este endpoint te permite obtener información de una o todas las formas de pago disponibles."
       operationId: paymentTypes
       parameters:
         - name: id_pais
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
           description: ID del país consultado (Opcional)
         - name: id
           in: query
           schema:
             type: string
-            example: "7"
+            example: '7'
           description: ID del tipo de pago consultado (Opcional)
       responses:
-        "200":
+        '200':
           description: payment types
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -1473,7 +1496,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -1504,9 +1527,9 @@ paths:
                       type: string
                       example: A
                 example:
-                  - agency_code: "Contado"
+                  - agency_code: Contado
                     code: CON
-                    description: "Contado"
+                    description: Contado
                     id: 7
                     id_country: 1
                     state: A
@@ -1515,7 +1538,7 @@ paths:
                   value:
                     - agency_code: Contado
                       code: CON
-                      description: "Contado"
+                      description: Contado
                       id: 7
                       id_country: 1
                       state: A
@@ -1526,30 +1549,30 @@ paths:
       tags:
         - System Configuration
         - legal entity
-      summary: legalentities
-      description: legalentities
+      summary: Legal Entities
+      description: "Este endpoint te permite obtener los tipos de personería que pueden aplicar a emisor y/o receptor de comprobantes."
       operationId: legalentities
       parameters:
         - name: id
           in: query
           schema:
             type: string
-            example: "3"
+            example: '3'
           description: ID del la personería (Opcional)
         - name: id_country
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
           description: ID del país consultado (Opcional)
       responses:
-        "200":
+        '200':
           description: legalentities
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -1577,7 +1600,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -1642,30 +1665,30 @@ paths:
       tags:
         - System Configuration
         - MeasurementUnits
-      summary: MeasurementUnits
-      description: MeasurementUnits
+      summary: Measurement Units
+      description: "Con este endpoint puedes obtener las unidades de medidas utilizadas en la emisión de comprobantes."
       operationId: measurementunits
       parameters:
         - name: id
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
           description: ID de la unidad de medida consultada (Opcional)
         - name: id_country
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
           description: ID del país consultado (Opcional)
       responses:
-        "200":
+        '200':
           description: MeasurementUnits
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -1693,7 +1716,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -1707,7 +1730,7 @@ paths:
                   properties:
                     agency_code:
                       type: string
-                      example: "20"
+                      example: '20'
                     code:
                       type: string
                       example: cm
@@ -1724,7 +1747,7 @@ paths:
                       type: string
                       example: A
                 example:
-                  - agency_code: "20"
+                  - agency_code: '20'
                     code: cm
                     description: Centimetro
                     id: 1
@@ -1733,7 +1756,7 @@ paths:
               examples:
                 MeasurementUnits:
                   value:
-                    - agency_code: "20"
+                    - agency_code: '20'
                       code: cm
                       description: Centimetro
                       id: 1
@@ -1747,29 +1770,29 @@ paths:
         - System Configuration
         - Tax Identification Documents
       summary: Tax Identification Documents
-      description: Tax Identification Documents
+      description: "Este endpoint te permite obtener los tipos de documentos de identidad para emisor y/o receptor."
       operationId: taxIdentificationDocuments
       parameters:
         - name: id
           in: query
           schema:
             type: string
-            example: "5"
+            example: '5'
           description: ID de la unidad de medida consultada (Opcional)
         - name: id_country
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
           description: ID del país consultado (Opcional)
       responses:
-        "200":
+        '200':
           description: Tax Identification Documents
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -1797,7 +1820,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -1811,7 +1834,7 @@ paths:
                   properties:
                     agency_code:
                       type: string
-                      example: "80"
+                      example: '80'
                     code:
                       type: string
                       example: CUIT
@@ -1828,7 +1851,7 @@ paths:
                       type: string
                       example: A
                 example:
-                  - agency_code: "80"
+                  - agency_code: '80'
                     code: CUIT
                     description: CUIT
                     id: 5
@@ -1837,7 +1860,7 @@ paths:
               examples:
                 Tax Identification Documents:
                   value:
-                    - agency_code: "80"
+                    - agency_code: '80'
                       code: CUIT
                       description: CUIT
                       id: 5
@@ -1850,30 +1873,30 @@ paths:
       tags:
         - System Configuration
         - DocumentType
-      summary: DocumentType
-      description: DocumentType
+      summary: Document Type
+      description: "Este endpoint se encuentra relacionado a los tipos de comprobantes posibles."
       operationId: documenttype
       parameters:
         - name: id_country
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
           description: ID del país consultado (Opcional)
         - name: id
           in: query
           schema:
             type: string
-            example: "3"
-          description: ID del tipo de documento consultado (Opcional)
+            example: '3'
+          description: ID del tipo de comprobante consultado (Opcional)
       responses:
-        "200":
+        '200':
           description: DocumentType
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -1901,7 +1924,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -1959,30 +1982,30 @@ paths:
       tags:
         - System Configuration
         - additionalExportInfo
-      summary: additionalExportInfo
-      description: additionalExportInfo
+      summary: Additional ExportInfo
+      description: "Este endpoint te permite obtener parámetros que se envían a través de la propiedad additionalExportInfo en la petición de emisión de comprobantes de exportación."
       operationId: additionalexportinfo
       parameters:
         - name: id_country
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
           description: ID del país consultado (Opcional)
         - name: id
           in: query
           schema:
             type: string
-            example: "2"
+            example: '2'
           description: ID del dato adicional (Opcional)
       responses:
-        "200":
+        '200':
           description: additionalExportInfo
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -2010,7 +2033,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -2063,30 +2086,30 @@ paths:
       tags:
         - System Configuration
         - TaxTypes
-      summary: taxTypes
-      description: taxTypes
+      summary: Tax Types
+      description: "Este endpoint te permite obtener los tipos de impuestos aplicables a comprobantes."
       operationId: taxtypes
       parameters:
         - name: id
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
           description: ID de tipo de impuesto (Opcional)
         - name: id_country
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
           description: ID del país consultado (Opcional)
       responses:
-        "200":
+        '200':
           description: taxTypes
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -2114,7 +2137,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -2128,7 +2151,7 @@ paths:
                   properties:
                     agency_code:
                       type: string
-                      example: "5"
+                      example: '5'
                     code:
                       type: string
                       example: iva21
@@ -2143,27 +2166,27 @@ paths:
                       example: 1
                     rate:
                       type: string
-                      example: "21.0000"
+                      example: '21.0000'
                     status:
                       type: string
                       example: A
                 example:
-                  - agency_code: "5"
+                  - agency_code: '5'
                     code: iva21
                     description: Impuesto al valor agregado 21%
                     id: 1
                     id_country: 1
-                    rate: "21.0000"
+                    rate: '21.0000'
                     status: A
               examples:
                 taxTypes:
                   value:
-                    - agency_code: "5"
+                    - agency_code: '5'
                       code: iva21
                       description: Impuesto al valor agregado 21%
                       id: 1
                       id_country: 1
-                      rate: "21.0000"
+                      rate: '21.0000'
                       status: A
       security:
         - bearerAuth: []
@@ -2175,9 +2198,112 @@ paths:
       summary: ItemAdditionalnfo
       description: ItemAdditionalnfo
       operationId: itemadditionalnfo
+      parameters:
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID del país consultado (Opcional)
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: '1'
+          description: ID del dato consultado (Opcional)
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ItemAdditionalnfo
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 16 Sep 2024 19:28:46 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: '-1'
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    data_type:
+                      type: string
+                      example: string
+                    description:
+                      type: string
+                      example: Numero de despacho
+                    id:
+                      type: number
+                      example: 1
+                    id_country:
+                      type: number
+                      example: 1
+                    key:
+                      type: string
+                      example: customs_number
+                    status:
+                      type: string
+                      example: A
+                example:
+                  - data_type: string
+                    description: Numero de despacho
+                    id: 1
+                    id_country: 1
+                    key: customs_number
+                    status: A
+                  - data_type: datetime
+                    description: Fecha de inicio de actividades de despacho
+                    id: 2
+                    id_country: 1
+                    key: start_activities_date_customs
+                    status: A
+              examples:
+                ItemAdditionalnfo:
+                  value:
+                    - data_type: string
+                      description: Numero de despacho
+                      id: 1
+                      id_country: 1
+                      key: customs_number
+                      status: A
+                    - data_type: datetime
+                      description: Fecha de inicio de actividades de despacho
+                      id: 2
+                      id_country: 1
+                      key: start_activities_date_customs
+                      status: A
       security:
         - bearerAuth: []
   /api/tax-information:
@@ -2185,30 +2311,30 @@ paths:
       tags:
         - System Configuration
         - taxInformation
-      summary: taxInformation
-      description: taxInformation
+      summary: Tax Information
+      description: "Este endpoint te permite obtener varias propiedades con información impositiva necesaria en la creación de comprobantes como por ejemplo condición impositiva o fecha de inicio de actividades que pueden ser aplicables tanto a emisor como a receptor."
       operationId: taxinformation
       parameters:
         - name: id
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
           description: ID del dato (Opcional)
         - name: id_country
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
           description: ID del país consultado (Opcional)
       responses:
-        "200":
+        '200':
           description: taxInformation
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -2236,7 +2362,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -2288,16 +2414,16 @@ paths:
     get:
       tags:
         - System Configuration
-        - itemCodeType
-      summary: itemCodeType
-      description: itemCodeType
+        - Item Code Type
+      summary: Item Code Type
+      description: "Este endpoint te permite obtener todos los tipos de códigos asociados a productos dentro del comprobante como por ejemplo EAN-13 o EAN-8."
       operationId: itemcodetype
       parameters:
         - name: id_country
           in: query
           schema:
             type: string
-            example: "2"
+            example: '2'
           description: ID del país consultado (Opcional)
         - name: code
           in: query
@@ -2309,16 +2435,16 @@ paths:
           in: query
           schema:
             type: string
-            example: "3"
+            example: '3'
           description: ID del de tipo de código (Opcional)
       responses:
-        "200":
+        '200':
           description: itemCodeType
           headers:
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Cache-Control:
               schema:
                 type: string
@@ -2346,7 +2472,7 @@ paths:
             expires:
               schema:
                 type: string
-                example: "-1"
+                example: '-1'
             pragma:
               schema:
                 type: string
@@ -2366,7 +2492,7 @@ paths:
                       example: ean8
                     description:
                       type: string
-                      example: ""
+                      example: ''
                     id:
                       type: number
                       example: 3
@@ -2379,7 +2505,7 @@ paths:
                 example:
                   - agency_code: GTIN8
                     code: ean8
-                    description: ""
+                    description: ''
                     id: 3
                     id_country: 2
                     status: A
@@ -2388,7 +2514,7 @@ paths:
                   value:
                     - agency_code: GTIN8
                       code: ean8
-                      description: ""
+                      description: ''
                       id: 3
                       id_country: 2
                       status: A
@@ -2424,7 +2550,7 @@ paths:
           in: header
           schema:
             type: string
-            example: "1"
+            example: '1'
         - name: origin
           in: header
           schema:
@@ -2472,7 +2598,7 @@ paths:
           in: header
           schema:
             type: string
-            example: "?0"
+            example: '?0'
         - name: sec-ch-ua-platform
           in: header
           schema:
@@ -2486,8 +2612,8 @@ paths:
                 value: >-
                   funcion=EnviarCC&bel.6;e,'cls,,8;5,'metricId,'v3-1722871518759-6092510992886;9,'largestShiftTarget;9,'largestShiftTime;9,'largestShiftValue;9,'loadState;5,'net-etype,'4g;6,'net-rtt,100.;6,'net-dlink,1.95&bel.6;e,'inp,1k,9;5,'metricId,'v3-1722871521829-1603304641315;5,'eventTarget,'#buscar;5,'eventType,'click;6,'eventTime,233596.69999998808;5,'loadState,'complete;5,'net-etype,'4g;6,'net-rtt,100.;6,'net-dlink,1.95;6,'cls,0.00003380487480905891;e,e,0,8;5,1,'v3-1722871521830-1268095298551;5,'largestShiftTarget,'#tabla_emision;6,'largestShiftTime,428.19999998807907;6,'largestShiftValue,0.00003380487480905891;5,8,'dom-content-loaded;5,a,b;6,c,100.;6,d,1.95
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
   /appFacturacionElectronica/Modulo_Emision/SubModulo_PanelEmision/Controlador/Controlador_PanelEmision.php:
     get:
       summary: >-
@@ -2505,32 +2631,32 @@ paths:
           in: query
           schema:
             type: string
-            example: "0"
+            example: '0'
         - name: TipoDTE
           in: query
           schema:
             type: string
-            example: "0"
+            example: '0'
         - name: FechaInicial
           in: query
           schema:
             type: string
-            example: "2024-01-01"
+            example: '2024-01-01'
         - name: FechaFinal
           in: query
           schema:
             type: string
-            example: "2024-08-05"
+            example: '2024-08-05'
         - name: Folio
           in: query
           schema:
             type: string
-            example: "0"
+            example: '0'
         - name: Filtro
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
         - name: respuestaSII
           in: query
           schema:
@@ -2540,92 +2666,92 @@ paths:
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
         - name: iColumns
           in: query
           schema:
             type: string
-            example: "12"
+            example: '12'
         - name: sColumns
           in: query
           schema:
             type: string
-            example: "%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C"
+            example: '%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C'
         - name: iDisplayStart
           in: query
           schema:
             type: string
-            example: "0"
+            example: '0'
         - name: iDisplayLength
           in: query
           schema:
             type: string
-            example: "10"
+            example: '10'
         - name: mDataProp_0
           in: query
           schema:
             type: string
-            example: "0"
+            example: '0'
         - name: mDataProp_1
           in: query
           schema:
             type: string
-            example: "1"
+            example: '1'
         - name: mDataProp_2
           in: query
           schema:
             type: string
-            example: "2"
+            example: '2'
         - name: mDataProp_3
           in: query
           schema:
             type: string
-            example: "3"
+            example: '3'
         - name: mDataProp_4
           in: query
           schema:
             type: string
-            example: "4"
+            example: '4'
         - name: mDataProp_5
           in: query
           schema:
             type: string
-            example: "5"
+            example: '5'
         - name: mDataProp_6
           in: query
           schema:
             type: string
-            example: "6"
+            example: '6'
         - name: mDataProp_7
           in: query
           schema:
             type: string
-            example: "7"
+            example: '7'
         - name: mDataProp_8
           in: query
           schema:
             type: string
-            example: "8"
+            example: '8'
         - name: mDataProp_9
           in: query
           schema:
             type: string
-            example: "9"
+            example: '9'
         - name: mDataProp_10
           in: query
           schema:
             type: string
-            example: "10"
+            example: '10'
         - name: mDataProp_11
           in: query
           schema:
             type: string
-            example: "11"
+            example: '11'
         - name: _
           in: query
           schema:
             type: string
-            example: "1722871521797"
+            example: '1722871521797'
         - name: accept-language
           in: header
           schema:
@@ -2649,7 +2775,7 @@ paths:
           in: header
           schema:
             type: string
-            example: "1"
+            example: '1'
         - name: referer
           in: header
           schema:
@@ -2692,15 +2818,15 @@ paths:
           in: header
           schema:
             type: string
-            example: "?0"
+            example: '?0'
         - name: sec-ch-ua-platform
           in: header
           schema:
             type: string
             example: '"Windows"'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
 components:
   securitySchemes:
     apiKey:

@@ -4,8 +4,7 @@ info:
   version: 1.0.0
   contact: {}
 servers:
-  - url: "{{url}}"
-  - url: https://www.appoctava.cl
+  - url: "{{base_url}}"
 paths:
   /api/login:
     post:
@@ -13,7 +12,7 @@ paths:
         - Access
         - Login
       summary: Login
-      description: Login
+      description: "Este endpoint te permite iniciar sesión con un usuario y obtener un Bearer Token que expira en 24 horas."
       operationId: login
       requestBody:
         content:
@@ -23,14 +22,14 @@ paths:
               properties:
                 email:
                   type: string
-                  example: alvaroamav96@gmail.com
+                  example: example@email.com
                 password:
                   type: string
                   example: "123456"
             examples:
               Login:
                 value:
-                  email: alvaroamav96@gmail.com
+                  email: example@email.com
                   password: "123456"
       responses:
         "200":
@@ -80,12 +79,12 @@ paths:
                   jwt:
                     type: string
                     example: >-
-                      eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7InVzZXJJZCI6NCwiZW1haWwiOiJhbHZhcm9hbWF2OTZAZ21haWwuY29tIn0sImlzcyI6IiIsImlhdCI6MTcyNTI5NzM5MCwiZXhwIjoxNzI1MzgzNzkwfQ.hq-1bvVWcUNnDo06IwVTWTT40uIh-ehHGojXThaBPO6FZRB7Ys_UxiZzFcfntBcYxvCJAJhBHd5q70_7v8JBu4a4Exz-xJB7tftHxO3BgzewBI2t5UuhRxy-JUaPVKjeQroQOqYrqSNXDyMl5yNF2UWsrrCN-hnHN6J_Vzp10-lrnvD_D11j0HgTEDqpCZUU9rznUGJjHinuvo3hje55fvvp9lpUw9V1Sxph6-Rse4dqEmoP3sBPkHvybbYrj7PoS2DDAOIElAn3HQqDQVymChmEd7ZyRXFAPFVmMFfbSbqda_ZnBFhmR2o0G8_e7bka7lOJaW3gA4rjkRk8xNJlxeWQx3Y-YOWaJJ2Eu37YCSl8UKWULZA6mZPNnFXtAz1aoIyFPkpbjY1cdgtE2kNWAzrsw-gv1ZbG7PhKQMz0vJ1nhP8uSZdd6oBVgb2YpiiY8Ws8tFjzZQw1IICfNm7bjpZy3iPgVSJwEqJJ7v6yeoleT46SA9K7GVkhUmMt4iMMZB2EUJfN9ogQK45CXG2faidhWZrCumpk3M66vnUT14NahhR0INqQNmG505hWiRNZcYSwfuJk9yxS1IYz78_vO5bgLUGIvGEFwot89wso6eCb-qiPtsKUZoyHKGUKCK3q1Gjk28FLS5RvQDTTaYSWxQUJiBwPBXbnyG-NWPHLluw
+                      eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9
               examples:
                 Login:
                   value:
                     jwt: >-
-                      eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7InVzZXJJZCI6NCwiZW1haWwiOiJhbHZhcm9hbWF2OTZAZ21haWwuY29tIn0sImlzcyI6IiIsImlhdCI6MTcyNTI5NzM5MCwiZXhwIjoxNzI1MzgzNzkwfQ.hq-1bvVWcUNnDo06IwVTWTT40uIh-ehHGojXThaBPO6FZRB7Ys_UxiZzFcfntBcYxvCJAJhBHd5q70_7v8JBu4a4Exz-xJB7tftHxO3BgzewBI2t5UuhRxy-JUaPVKjeQroQOqYrqSNXDyMl5yNF2UWsrrCN-hnHN6J_Vzp10-lrnvD_D11j0HgTEDqpCZUU9rznUGJjHinuvo3hje55fvvp9lpUw9V1Sxph6-Rse4dqEmoP3sBPkHvybbYrj7PoS2DDAOIElAn3HQqDQVymChmEd7ZyRXFAPFVmMFfbSbqda_ZnBFhmR2o0G8_e7bka7lOJaW3gA4rjkRk8xNJlxeWQx3Y-YOWaJJ2Eu37YCSl8UKWULZA6mZPNnFXtAz1aoIyFPkpbjY1cdgtE2kNWAzrsw-gv1ZbG7PhKQMz0vJ1nhP8uSZdd6oBVgb2YpiiY8Ws8tFjzZQw1IICfNm7bjpZy3iPgVSJwEqJJ7v6yeoleT46SA9K7GVkhUmMt4iMMZB2EUJfN9ogQK45CXG2faidhWZrCumpk3M66vnUT14NahhR0INqQNmG505hWiRNZcYSwfuJk9yxS1IYz78_vO5bgLUGIvGEFwot89wso6eCb-qiPtsKUZoyHKGUKCK3q1Gjk28FLS5RvQDTTaYSWxQUJiBwPBXbnyG-NWPHLluw
+                      eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9
   /api/logout:
     post:
       tags:
@@ -296,8 +295,57 @@ paths:
                   tax_identifier: "434234"
                   tax_identifier_name: RUT
       responses:
-        "200":
-          description: ""
+        "201":
+          description: New Company
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: "*"
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 16 Sep 2024 20:47:55 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: "-1"
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 38
+              examples:
+                New Company:
+                  value:
+                    id: 38
       security:
         - bearerAuth: []
   /api/companies/apikey:
@@ -319,18 +367,69 @@ paths:
                   example: key para empresa
                 id_company:
                   type: string
-                  example: "33"
+                  example: "38"
             examples:
               New ApiKey:
                 value:
                   description: key para empresa
-                  id_company: "33"
+                  id_company: "38"
       responses:
-        "200":
-          description: ""
+        "201":
+          description: New ApiKey
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: "*"
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 16 Sep 2024 20:48:20 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: "-1"
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  api-key:
+                    type: string
+                    example: >-
+                      35f9985e646fa0fbd24842f8113e1e40ff029b0ae3d120a694a1be16be5f65cb
+              examples:
+                New ApiKey:
+                  value:
+                    api-key: >-
+                      35f9985e646fa0fbd24842f8113e1e40ff029b0ae3d120a694a1be16be5f65cb
       security:
         - bearerAuth: []
-  /api/companies/16/certificates:
+  /api/companies/{id_company}/certificates:
     post:
       tags:
         - Companies
@@ -358,13 +457,19 @@ paths:
                   example: "2023-03-23"
                 password:
                   type: string
-                  example: ""
+                  example: abcd1234
       responses:
         "200":
           description: ""
       security:
-        - bearerAuth: []
-  /api/companies/24/logo:
+        - apiKey: []
+    parameters:
+      - name: id_compary
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/companies/{id_compary}/logo:
     post:
       tags:
         - Companies
@@ -385,8 +490,14 @@ paths:
         "200":
           description: ""
       security:
-        - bearerAuth: []
-  /api/companies/33/enumeration/upload:
+        - apiKey: []
+    parameters:
+      - name: id_compary
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/companies/{id_company}/enumeration/upload:
     post:
       tags:
         - Companies
@@ -411,6 +522,12 @@ paths:
           description: ""
       security:
         - apiKey: []
+    parameters:
+      - name: id_company
+        in: path
+        required: true
+        schema:
+          type: string
   /api/companies/33/enumeration/4/config:
     put:
       tags:
@@ -436,7 +553,7 @@ paths:
         "200":
           description: ""
       security:
-        - bearerAuth: []
+        - apiKey: []
   /api/companies/33/enumeration/4:
     delete:
       tags:
@@ -462,7 +579,7 @@ paths:
         "200":
           description: ""
       security:
-        - bearerAuth: []
+        - apiKey: []
   /api/companies/29:
     put:
       tags:
@@ -510,13 +627,13 @@ paths:
           description: ""
       security:
         - apiKey: []
-  /api/certificates/16/list:
+  /api/certificates/{{id_company}}/list:
     get:
       tags:
         - Companies
         - companies
-      summary: Certificados
-      description: Certificados
+      summary: Certificates
+      description: "Este endpoint te responde con los certificados digitales cargados para una empresa y tiene un paginado de 50 resultados a la vez. En la petición puedes indicar el estado (A: activo o I: inactivo) del certificado y número de página; en caso de no indicar este último, obtendrás los certificados más recientes. Por su parte, la propiedad days_remaining en la respuesta indica la cantidad de días vigentes antes de la fecha de expiración."
       operationId: certificados
       parameters:
         - name: page
@@ -531,22 +648,210 @@ paths:
             example: A
       responses:
         "200":
-          description: ""
+          description: Certificates
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: "*"
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Tue, 24 Sep 2024 01:12:46 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: "-1"
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        days_remaining:
+                          type: number
+                          example: 179
+                        expiration_date:
+                          type: string
+                          example: "2025-03-22"
+                        from_date:
+                          type: string
+                          example: "2023-03-23"
+                        status:
+                          type: string
+                          example: A
+                    example:
+                      - days_remaining: 179
+                        expiration_date: "2025-03-22"
+                        from_date: "2023-03-23"
+                        status: A
+                  page:
+                    type: number
+                    example: 1
+                  total_pages:
+                    type: number
+                    example: 1
+                  total_results:
+                    type: number
+                    example: 1
+              examples:
+                Certificates:
+                  value:
+                    data:
+                      - days_remaining: 179
+                        expiration_date: "2025-03-22"
+                        from_date: "2023-03-23"
+                        status: A
+                    page: 1
+                    total_pages: 1
+                    total_results: 1
       security:
-        - bearerAuth: []
-  /api/list-api-keys/apikeys/29/list:
+        - apiKey: []
+    parameters:
+      - name: id_company
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/list-api-keys/apikeys/{{id_company}}/list:
     get:
       tags:
         - Companies
         - companies
       summary: Api keys
-      description: Api keys
+      description: "Este endpoint te permite obtener las API Keys de todas las empresas asociadas a tus credenciales de Login."
       operationId: apiKeys
       responses:
         "200":
-          description: ""
+          description: Api keys
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: "*"
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Tue, 24 Sep 2024 01:20:51 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: "-1"
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        api_key:
+                          type: string
+                          example: 6bc64bd...
+                        description:
+                          type: string
+                          example: key para empresa
+                        id_company:
+                          type: number
+                          example: 16
+                        status:
+                          type: string
+                          example: A
+                    example:
+                      - api_key: 6bc64bd...
+                        description: key para empresa
+                        id_company: 16
+                        status: A
+                      - api_key: aa33693...
+                        description: key para empresa
+                        id_company: 16
+                        status: I
+                  page:
+                    type: number
+                    example: 1
+                  total_pages:
+                    type: number
+                    example: 1
+                  total_results:
+                    type: number
+                    example: 2
+              examples:
+                Api keys:
+                  value:
+                    data:
+                      - api_key: 6bc64bd...
+                        description: key para empresa
+                        id_company: 16
+                        status: A
+                      - api_key: aa33693...
+                        description: key para empresa
+                        id_company: 16
+                        status: I
+                    page: 1
+                    total_pages: 1
+                    total_results: 2
       security:
         - bearerAuth: []
+    parameters:
+      - name: id_company
+        in: path
+        required: true
+        schema:
+          type: string
   /api/invoices:
     post:
       tags:
@@ -1097,8 +1402,8 @@ paths:
       tags:
         - System Configuration
         - countries
-      summary: Regions
-      description: Este endpoint te permite obtener todos las provincias/regiones/estados con la opción de filtrar por país.
+      summary: regions
+      description: regions
       operationId: regions
       parameters:
         - name: id_country
@@ -1106,7 +1411,7 @@ paths:
           schema:
             type: string
             example: "2"
-          description: ID del país consultado
+          description: ID del país consultado (Opcional)
       responses:
         "200":
           description: regions
@@ -1186,8 +1491,8 @@ paths:
       tags:
         - System Configuration
         - countries
-      summary: Countries
-      description: Este endpoint te permite obtener parámetros asociados a cada país.
+      summary: countries
+      description: countries
       operationId: countries
       responses:
         "200":
@@ -1319,16 +1624,22 @@ paths:
       tags:
         - System Configuration
         - currencies
-      summary: Nueva moneda
-      description: Nueva moneda
-      operationId: nuevaMoneda
+      summary: currencie
+      description: currencie
+      operationId: currencie
       parameters:
         - name: id
           in: query
           schema:
             type: string
-            example: "1"
-          description: ID del la moneda (Opcional)
+            example: "2"
+          description: ID de la moneda consultada (Opcional)
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: "2"
+          description: ID país consultado (Opcional)
       responses:
         "200":
           description: currencies
@@ -1422,8 +1733,8 @@ paths:
       tags:
         - System Configuration
         - payment type
-      summary: Payment Types
-      description: Este endpoint te permite obtener todas las formas de pago con la opción de filtrar por país.
+      summary: payment types
+      description: payment types
       operationId: paymentTypes
       parameters:
         - name: id_pais
@@ -1504,9 +1815,9 @@ paths:
                       type: string
                       example: A
                 example:
-                  - agency_code: "Contado"
+                  - agency_code: Contado
                     code: CON
-                    description: "Contado"
+                    description: Contado
                     id: 7
                     id_country: 1
                     state: A
@@ -1515,7 +1826,7 @@ paths:
                   value:
                     - agency_code: Contado
                       code: CON
-                      description: "Contado"
+                      description: Contado
                       id: 7
                       id_country: 1
                       state: A
@@ -2175,9 +2486,112 @@ paths:
       summary: ItemAdditionalnfo
       description: ItemAdditionalnfo
       operationId: itemadditionalnfo
+      parameters:
+        - name: id_country
+          in: query
+          schema:
+            type: string
+            example: "1"
+          description: ID del país consultado (Opcional)
+        - name: id
+          in: query
+          schema:
+            type: string
+            example: "1"
+          description: ID del dato consultado (Opcional)
       responses:
         "200":
-          description: ""
+          description: ItemAdditionalnfo
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: "*"
+            Cache-Control:
+              schema:
+                type: string
+                example: private, must-revalidate
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Date:
+              schema:
+                type: string
+                example: Mon, 16 Sep 2024 19:28:46 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.18.0 (Ubuntu)
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.27
+            expires:
+              schema:
+                type: string
+                example: "-1"
+            pragma:
+              schema:
+                type: string
+                example: no-cache
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    data_type:
+                      type: string
+                      example: string
+                    description:
+                      type: string
+                      example: Numero de despacho
+                    id:
+                      type: number
+                      example: 1
+                    id_country:
+                      type: number
+                      example: 1
+                    key:
+                      type: string
+                      example: customs_number
+                    status:
+                      type: string
+                      example: A
+                example:
+                  - data_type: string
+                    description: Numero de despacho
+                    id: 1
+                    id_country: 1
+                    key: customs_number
+                    status: A
+                  - data_type: datetime
+                    description: Fecha de inicio de actividades de despacho
+                    id: 2
+                    id_country: 1
+                    key: start_activities_date_customs
+                    status: A
+              examples:
+                ItemAdditionalnfo:
+                  value:
+                    - data_type: string
+                      description: Numero de despacho
+                      id: 1
+                      id_country: 1
+                      key: customs_number
+                      status: A
+                    - data_type: datetime
+                      description: Fecha de inicio de actividades de despacho
+                      id: 2
+                      id_country: 1
+                      key: start_activities_date_customs
+                      status: A
       security:
         - bearerAuth: []
   /api/tax-information:
