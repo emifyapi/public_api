@@ -47,7 +47,7 @@ curl --request POST '{{base_url}}/api/companies/apikey' \
 ```
 
 {% hint style="warning" %}
-Guarda tu API Key, ya que no podrás consultarla en otro momento.
+Una vez que generes tu API Key, es importante que la guardes en un lugar seguro, ya que no podrás consultarla en otro momento.
 {% endhint %}
 
 #### **4. Cargar logo**

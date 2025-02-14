@@ -4,25 +4,27 @@ Esta es una sección de consulta que tiene el objetivo de agrupar todos aquellos
 
 
 
-{% swagger src="../.gitbook/assets/parametros.yaml" path="/api/currencies" method="get" %}
-[parametros.yaml](../.gitbook/assets/parametros.yaml)
+{% swagger src="../.gitbook/assets/additiona_export_info.yaml" path="/api/additional-export-info" method="get" %}
+[additiona_export_info.yaml](../.gitbook/assets/additiona_export_info.yaml)
 {% endswagger %}
-
-***
 
 {% swagger src="../.gitbook/assets/parametros.yaml" path="/api/countries" method="get" %}
 [parametros.yaml](../.gitbook/assets/parametros.yaml)
 {% endswagger %}
 
-***
-
-{% swagger src="../.gitbook/assets/CountryRegionPayment.yaml" path="/api/regions" method="get" %}
-[CountryRegionPayment.yaml](../.gitbook/assets/CountryRegionPayment.yaml)
-{% endswagger %}
-
-{% swagger src="../.gitbook/assets/parametros.yaml" path="/api/payment-types" method="get" %}
+{% swagger src="../.gitbook/assets/parametros.yaml" path="/api/currencies" method="get" %}
 [parametros.yaml](../.gitbook/assets/parametros.yaml)
 {% endswagger %}
+
+{% swagger src="../.gitbook/assets/parametros.yaml" path="/api/document-types" method="get" %}
+[parametros.yaml](../.gitbook/assets/parametros.yaml)
+{% endswagger %}
+
+{% swagger src="../.gitbook/assets/parametros.yaml" path="/api/item-code-types" method="get" %}
+[parametros.yaml](../.gitbook/assets/parametros.yaml)
+{% endswagger %}
+
+***
 
 ***
 
@@ -38,30 +40,28 @@ Esta es una sección de consulta que tiene el objetivo de agrupar todos aquellos
 
 ***
 
+{% swagger src="../.gitbook/assets/parametros.yaml" path="/api/payment-types" method="get" %}
+[parametros.yaml](../.gitbook/assets/parametros.yaml)
+{% endswagger %}
+
+{% swagger src="../.gitbook/assets/CountryRegionPayment.yaml" path="/api/regions" method="get" %}
+[CountryRegionPayment.yaml](../.gitbook/assets/CountryRegionPayment.yaml)
+{% endswagger %}
+
 {% swagger src="../.gitbook/assets/parametros.yaml" path="/api/tax-identification-documents" method="get" %}
 [parametros.yaml](../.gitbook/assets/parametros.yaml)
 {% endswagger %}
 
 ***
 
-{% swagger src="../.gitbook/assets/parametros.yaml" path="/api/document-types" method="get" %}
-[parametros.yaml](../.gitbook/assets/parametros.yaml)
-{% endswagger %}
-
 ***
 
-{% swagger src="../.gitbook/assets/parametros.yaml" path="/api/additional-export-info" method="get" %}
-[parametros.yaml](../.gitbook/assets/parametros.yaml)
+{% swagger src="../.gitbook/assets/additiona_export_info.yaml" path="/api/tax-information" method="get" %}
+[additiona_export_info.yaml](../.gitbook/assets/additiona_export_info.yaml)
 {% endswagger %}
-
-***
 
 {% swagger src="../.gitbook/assets/parametros.yaml" path="/api/tax-types" method="get" %}
 [parametros.yaml](../.gitbook/assets/parametros.yaml)
 {% endswagger %}
 
 ***
-
-{% swagger src="../.gitbook/assets/parametros.yaml" path="/api/item-code-types" method="get" %}
-[parametros.yaml](../.gitbook/assets/parametros.yaml)
-{% endswagger %}

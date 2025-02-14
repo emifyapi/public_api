@@ -2,7 +2,7 @@
 
 Esta guía de inicio rápido te permitirá realizar tu primera solicitud a la API en pocos minutos. A continuación, te llevaremos paso a paso por el proceso de configuración, autenticación y realización de una llamada básica.
 
-#### 1. Obtener las Credenciales de la API
+#### 1. Obtener las Credenciales de la API (Cómo registrarte)
 
 Antes de comenzar, necesitarás una cuenta registrada y obtener un Bearer Token. Sigue estos pasos:
 
@@ -14,7 +14,7 @@ Antes de comenzar, necesitarás una cuenta registrada y obtener un Bearer Token.
 * Producción: es el ambiente para gestionar tus operaciones diarias y generan comprobantes válidos ante el organismo. Para usar este entorno, configurar `url_base: https://emify.com/`.
 * Sandbox: es un ambiente de pruebas que se puede utilizar para probar el flujo de creación de empresas y emisión e impresión de comprobantes. Los comprobantes generados en este ambiente no son válidos ante el organismo. Para usar este entorno, configurar `url_base: https://sandbox.emify.com/`
 
-#### 4. Autenticación
+#### 3. Autenticación
 
 Para acceder a la API, todas las solicitudes deben incluir el Bearer Token en el encabezado de la solicitud. Aquí te mostramos un ejemplo utilizando `cURL`:
 
@@ -27,11 +27,11 @@ curl --location 'https://facttuapi.contabilium.com/api/login' \
 }'
 ```
 
-#### 5. Dar de alta una empresa:
+#### 4. Dar de alta una empresa:
 
 Una vez autenticado, podrás crear una empresa para obtener una API Key y realizar operaciones con esta. Para más información, consultar la sección Cómo dar de alta una empresa.
 
-#### 6. Explora los Endpoints:
+5\. Explora los Endpoints:
 
 Con tu API Key puedes explora los demás endpoints disponibles en la sección de Referencias API. Allí encontrarás detalles sobre cómo acceder a diferentes recursos y realizar operaciones más avanzadas.
 
