@@ -701,5 +701,126 @@ Ver Web Service MiPyme. Se necesita CBU
 
 Ejemplo:
 
+```bash
+{
+  "branch_office": 1,
+  "invoice_type": "FCYA",
+  "invoice_date": "2025-01-21",
+  "payment_due_date": "2025-02-21",
+  "service_start_date": "2025-01-21 00:00:00",
+  "service_end_date": "2025-02-21 23:59:59",
+  "concept": "3",
+  "observations": "Nuestro horario de atención es de Lunes a Sábado de 9 a 20hs",
+  "external_reference": "103513046",
+  "issuer": {
+    "legal_name": "DEMO SRL",
+    "document_type": "CUIT",
+    "document_number": "20000000000",
+    "address": {
+      "country": "AR",
+      "state": "Ciudad de Buenos Aires",
+      "address": "SUIPACHA 250 1",
+      "phone": "0810-1566666666",
+    "tax_information": {
+      "tax_condition": "RI",
+      "start_activities_date": "2020-01-01"
+    }
+  },
+  "recipient": {
+    "legal_name": "LEGAL NAME",
+    "document_type": "CUIT",
+    "document_number": "23123123123",
+    "address": {
+      "country": "AR",
+      "state": "Ciudad de Buenos Aires",
+      "phone": "123456",
+      "address": "ALBERDI 250"
+    },
+    "tax_information": {
+      "tax_condition": "CF"
+    }
+  },
+  "currency": {
+    "code": "ARS",
+    "exchange_rate": 1
+  },
+  "payment_method": {
+    "code": "CON",
+    "description": "Cuenta corriente"
+  },
+  "items": [
+    {
+      "quantity": 1,
+      "code_unit_of_measure": "u",
+      "discount_amount": 0,
+      "unit_price": 904.06,
+      "description": "PHILIPS BODYGROOM BG2024/15",
+      "code": {
+        "type": "sku",
+        "value": "602979944"
+      },
+      "taxes": [
+        {
+          "type": "AR_IVA_10_5",
+          "amount": 94.93,
+          "rate": 10.5
+        }
+      ]
+    },
+    {
+      "quantity": 1,
+      "code_unit_of_measure": "u",
+      "unit_price": 140.49,
+      "discount_amount": 0,
+      "description": "Costo de envío",
+      "taxes": [
+        {
+          "type": "AR_IVA_21",
+          "amount": 29.50,
+          "rate": 21
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "code_unit_of_measure": "u",
+      "unit_price": 500.00,
+      "discount_amount": 0,
+      "description": "Producto adicional",
+      "code": {
+        "type": "sku",
+        "value": "123456789"
+      },
+      "taxes": [
+        {
+          "type": "AR_IVA_21",
+          "amount": 315.00,
+          "rate": 21
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "sub_total": 2544.55,
+    "discount": 0,
+    "taxes": [
+      {
+        "type": "AR_IVA_21",
+        "amount": 344.50,
+        "base_amount": 1640.49,
+        "rate": 21
+      },
+      {
+        "type": "AR_IVA_10_5",
+        "amount": 94.93,
+        "base_amount": 904.06,
+        "rate": 10.5
+      }
+    ],
+    "total": 2983.98
+  }
+}
+```
+
 </details>
 

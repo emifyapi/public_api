@@ -120,51 +120,37 @@ Ir a Parámetros.
 
 </details>
 
-{% swagger src="../.gitbook/assets/create_invoice (2).yaml" path="/api/invoices" method="post" %}
+{% openapi src="../.gitbook/assets/create_invoice (2).yaml" path="/api/invoices" method="post" %}
 [create_invoice (2).yaml](<../.gitbook/assets/create_invoice (2).yaml>)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../.gitbook/assets/getInvoice.yaml" path="/api/invoices/{{invoice_id}}" method="get" %}
+{% openapi src="../.gitbook/assets/getInvoice.yaml" path="/api/invoices/{{invoice_id}}" method="get" %}
 [getInvoice.yaml](../.gitbook/assets/getInvoice.yaml)
-{% endswagger %}
+{% endopenapi %}
 
 Anulación rápida de comprobante. Genera una nota de crédito a partir de un ID comprobante - Esto no existe, creé una historia
 
-{% swagger src="../.gitbook/assets/NC_yaml.yaml" path="/api/invoices/{{invoice_id}}/void" method="delete" %}
+{% openapi src="../.gitbook/assets/NC_yaml.yaml" path="/api/invoices/{{invoice_id}}/void" method="delete" %}
 [NC_yaml.yaml](../.gitbook/assets/NC_yaml.yaml)
-{% endswagger %}
+{% endopenapi %}
 
 
 
 Obtener PDF (todos los formatos) - No funciona
 
-{% swagger src="../.gitbook/assets/pdf_yaml.yaml" path="/api/invoices/{{invoice_id}}/download-pdf/A4" method="post" %}
+{% openapi src="../.gitbook/assets/pdf_yaml.yaml" path="/api/invoices/{{invoice_id}}/download-pdf/A4" method="post" %}
 [pdf_yaml.yaml](../.gitbook/assets/pdf_yaml.yaml)
-{% endswagger %}
+{% endopenapi %}
 
-{% swagger src="../.gitbook/assets/pdf_yaml.yaml" path="/api/invoices/{{invoice_id}}/download-pdf/58mm" method="post" %}
+{% openapi src="../.gitbook/assets/pdf_yaml.yaml" path="/api/invoices/{{invoice_id}}/download-pdf/58mm" method="post" %}
 [pdf_yaml.yaml](../.gitbook/assets/pdf_yaml.yaml)
-{% endswagger %}
+{% endopenapi %}
 
 ## _Falta 80mm_
 
-## _Se abre ticket porque XML no se renderiza_
-
-{% swagger src="../.gitbook/assets/XML_facttu.yaml" path="/api/invoices/{{invoice_id}}/download/xml" method="post" %}
+{% openapi src="../.gitbook/assets/XML_facttu.yaml" path="/api/invoices/{{invoice_id}}/download/xml" method="post" %}
 [XML_facttu.yaml](../.gitbook/assets/XML_facttu.yaml)
-{% endswagger %}
+{% endopenapi %}
 
 
-
-{% swagger src="../.gitbook/assets/XML_facttu (1).yaml" path="/api/invoices/{{invoice_id}}/download/xml" method="post" %}
-[XML_facttu (1).yaml](<../.gitbook/assets/XML_facttu (1).yaml>)
-{% endswagger %}
-
-{% swagger src="../.gitbook/assets/create_invoice (2).yaml" path="/api/invoices/66d773682c13b9d179082d72/download/xml" method="post" %}
-[create_invoice (2).yaml](<../.gitbook/assets/create_invoice (2).yaml>)
-{% endswagger %}
-
-{% swagger src="../.gitbook/assets/create_invoice (2).yaml" path="/api/invoices/66d773682c13b9d179082d72/download/xml" method="post" %}
-[create_invoice (2).yaml](<../.gitbook/assets/create_invoice (2).yaml>)
-{% endswagger %}
 
