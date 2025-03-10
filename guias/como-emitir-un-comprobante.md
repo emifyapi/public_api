@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Cómo emitir un comprobante
 
 Esta guía de inicio rápido te permitirá emitir un comprobante en donde se incluye la creación, consulta de estado, ejemplos de cada tipo de comprobante y su impresión. Para el conjunto de estos endpoints en necesario usar la API Key de tu empresa en cada petición. A continuación, te llevaremos paso a paso:

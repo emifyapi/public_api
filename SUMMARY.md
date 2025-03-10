@@ -18,7 +18,7 @@
 * [Webhooks](webhooks.md)
 * [Guías](guias/README.md)
   * [Cómo emitir un comprobante](guias/como-emitir-un-comprobante.md)
-  * [🏁 Cómo emitir un comprobante](guias/como-emitir-un-comprobante-1.md)
+  * [Cómo emitir un comprobante](guias/como-emitir-un-comprobante-1.md)
   * [Ejemplos de comprobantes](guias/ejemplos-de-comprobantes/README.md)
     * [Argentina](guias/ejemplos-de-comprobantes/argentina.md)
     * [Chile](guias/ejemplos-de-comprobantes/chile.md)

@@ -1,4 +1,4 @@
-# 🏁 Cómo emitir un comprobante
+# Cómo emitir un comprobante
 
 Esta guía te permitirá emitir un comprobante en la API, incluyendo los siguientes pasos:
 
@@ -9,8 +9,8 @@ Esta guía te permitirá emitir un comprobante en la API, incluyendo los siguien
 
 Para usar estos endpoints, es necesario incluir la **API Key** de tu empresa en cada petición.
 
-{% hint style="info" %}
-**Importante:** Tu API Key se genera automáticamente al momento de crear tu empresa. **Guárdala en un lugar seguro**, ya que no podrás consultarla nuevamente.
+{% hint style="warning" %}
+Tu API Key se genera automáticamente al momento de crear tu empresa. **Guárdala en un lugar seguro**, ya que no podrás consultarla nuevamente.
 {% endhint %}
 
 ***
@@ -24,7 +24,7 @@ Envía una solicitud `POST` a la API con la información del comprobante.
 **Estructura:**
 
 ```sh
-curl --POST '{{base_url}}/api/invoices' \
+curl --request POST '{{base_url}}/api/invoices' \
 --header 'Content-Type: application/json' \
 --header 'x-api-key: {{apiKey}}' \
 --data-raw '{
@@ -157,8 +157,8 @@ curl --POST --location '{{base_url}}/api/invoices' \
 
 </details>
 
-{% hint style="info" %}
-📌 **Nota:** Asegúrate de reemplazar `{{apiKey}}` con tu clave de API válida.
+{% hint style="warning" %}
+Asegúrate de reemplazar `{{apiKey}}` con tu clave de API válida.
 {% endhint %}
 
 Este paso configura la información del comprobante, incluyendo:\
@@ -189,7 +189,7 @@ Después de emitir el comprobante, puedes consultar su estado ante el organismo 
 {
   "id": "123456",
   "number": "0001-00012345",
-  "status": "Pending",
+  "status": "Accepted",
   "electronic_authorization": {
     "type": "CAE",
     "code": "61123000000001",
@@ -211,6 +211,9 @@ Después de emitir el comprobante, puedes consultar su estado ante el organismo 
     | `In process` | En espera de respuesta del ente fiscal.          |
     | `Accepted`   | Comprobante aceptado y emitido con éxito.        |
     | `Rejected`   | Comprobante rechazado (ver motivo).              |
+
+<figure><img src="../.gitbook/assets/estados (1).png" alt=""><figcaption><p>Flujo de estados de comprobantes</p></figcaption></figure>
+
 * **`electronic_authorization`** → Datos de autorización electrónica (solo disponible si `status = Accepted`).
 
 Con esta información, puedes verificar la validez del comprobante y gestionar procesos administrativos.
@@ -224,7 +227,7 @@ Una vez que el comprobante tenga el estado `Accepted`, puedes descargar su versi
 #### 🔹 **Ejemplo de petición (cURL)**
 
 ```sh
-shCopiarEditarcurl --location --request POST '{{base_url}}/api/invoices/{{invoice_id}}/download-pdf/A4' \
+--location --request POST '{{base_url}}/api/invoices/{{invoice_id}}/download-pdf/A4' \
 --header 'x-api-key: {{apiKey}}'
 ```
 

@@ -20,7 +20,7 @@ curl --request POST '{{base_url}}/api/login' \
 Ya autenticado, podrás crear una empresa y obtener un `id_company` con el siguiente recurso:
 
 ```batch
-curl --resquest POST '{{base_url}}/api/companies' \
+curl --request POST '{{base_url}}/api/companies' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer abcd' \
 --data '{
@@ -47,7 +47,7 @@ curl --request POST '{{base_url}}/api/companies/apikey' \
 ```
 
 {% hint style="warning" %}
-Una vez que generes tu API Key, es importante que la guardes en un lugar seguro, ya que no podrás consultarla en otro momento.
+Una vez que generes tu API Key, es importante que la guardes en un lugar seguro, ya que no podrás consultarla en otro momento. Si la pierdes, genera una nueva.
 {% endhint %}
 
 #### **4. Cargar logo**
@@ -65,7 +65,7 @@ curl --request POST '{{base_url}}/api/companies/{{id_company}}/logo' \
 A tu empresa tendrás que cargar certificado de facturación electrónica para comenzar a operar:
 
 ```batch
-curl --request POST '{{base_url}}/api/companies/{{id_empresa}}/certificates' \
+curl --request POST '{{base_url}}/api/companies/{{id_company}}/certificates' \
 --header 'x-api-key: abcd' \
 --form 'from_date="2023-03-23"' \
 --form 'expiration_date="2025-03-22"' \
@@ -79,7 +79,7 @@ curl --request POST '{{base_url}}/api/companies/{{id_empresa}}/certificates' \
 El siguiente paso es cargar el rango de numeración para operar con cada tipo de comprobante:
 
 ```batch
-curl --request POST '{{base_url}}/api/companies/{{id_empresa}}/enumeration/upload' \
+curl --request POST '{{base_url}}/api/companies/{{id_company}}}/enumeration/upload' \
 --header 'x-api-key: abcd' \
 --form 'id_document_type="55"' \
 --form 'file=@"/C:/Users/Empresa/Downloads/Ejemplo.xml"'
@@ -89,7 +89,7 @@ El ID en la respuesta corresponde con `id_enumeration` que se encuentra vinculad
 
 #### **7. Configurar numeración**  :flag\_cl: :flag\_uy:
 
-Una vez cargado el archivo con el rango de numeración, es necesario configurarlo para cada tipo de comprobante a partir del `id_enumeration`. En caso de saltarse este paso, la numeración inicial será correspondiente al límite inferior del rango cargado:
+Una vez cargado el archivo con el rango de numeración, es necesario configurarlo para cada tipo de comprobante a partir del `id_enumeration`. Si omites este paso, la numeración inicial será correspondiente al límite inferior del rango cargado:
 
 ```batch
 curl --request PUT '{{base_url}}/api/companies/{{id_empresa}}/enumeration/{{id_enumeration}}/config' \
@@ -100,7 +100,7 @@ curl --request PUT '{{base_url}}/api/companies/{{id_empresa}}/enumeration/{{id_e
 }'
 ```
 
-{% hint style="info" %}
+{% hint style="warning" %}
 * La configuración de la enumeración se hace por cada tipo de comprobante.
 * Configurar la enumeración es necesario cuando has facturado con otros servicios con el objetivo de respetar la correlatividad de tus comprobantes a lo largo de todos sistemas que has usado.
 {% endhint %}
