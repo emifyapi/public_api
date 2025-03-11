@@ -2,6 +2,7 @@
 description: >-
   Aquí encontrarás un registro de los cambios realizados en nuestra API,
   incluyendo mejoras, correcciones de errores y nuevas funcionalidades.
+hidden: true
 ---
 
 # Historial de actualizaciones

@@ -3,6 +3,7 @@ description: >-
   Aquí puedes encontrar información sobre el estado actual de nuestra API,
   incidentes recientes, métricas clave y mantenimiento programado. Página para
   mostrar el status
+hidden: true
 ---
 
 # Estado del servicio
