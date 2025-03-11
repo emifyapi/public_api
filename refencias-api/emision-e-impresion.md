@@ -106,9 +106,24 @@ A continuación se indica el tipo de dato y la descripción de los parámetros q
 
 <details>
 
+<summary>Global Taxes</summary>
+
+El array `global_taxes` contiene información sobre los impuestos aplicados globalmente sobre el comprobante (Ejemplo: IIBB para Argentina). Cada objeto dentro del array representa un tipo de impuesto aplicado.
+
+| Campo         | Descripción                                                                                                                          |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `type`        | Tipo de impuesto aplicado. Solo se permiten los valores de `code` del recurso [Tax Type ](parametros.md#api-tax-types)en Parámetros. |
+| `base_amount` | Monto de la base imponible sobre la cual se calculan los impuestos globales.                                                         |
+| `amount`      | Monto total del impuesto aplicado.                                                                                                   |
+| `rate`        | Porcentaje del impuesto que se aplica, el cual debe coincidir con los valores de `rate` en `tax_types` y corresponder con `type.`    |
+
+</details>
+
+<details>
+
 <summary>Additional Header Info</summary>
 
-Ir a Parámetros.
+[Ver en Parámetros.](emision-e-impresion.md#additional-header-info)
 
 </details>
 
@@ -116,7 +131,7 @@ Ir a Parámetros.
 
 <summary>Additional Export Info</summary>
 
-[Ir a Parámetros.](parametros.md#api-additional-export-info)
+[Ver en Parámetros.](emision-e-impresion.md#additional-export-info)
 
 </details>
 

@@ -23,12 +23,12 @@ Para mejorar la eficiencia en la recuperación de datos, nuestra API utiliza un 
 
 Al realizar una solicitud a los endpoints que soportan paginado, puedes utilizar los siguientes parámetros:
 
-* **`{parametro_offset}`** → Especifica el índice desde el cual empezar la consulta.
+* **`{page}`** → Especifica el índice desde el cual empezar la consulta.
 
 Ejemplo de solicitud paginada:
 
 ```http
-GET /invoice/list?{parametro_offset}=XX&{parametro_limit}=XX
+GET /invoice/list?{page}
 ```
 
 #### 🔹 **Respuesta paginada**
@@ -36,23 +36,19 @@ GET /invoice/list?{parametro_offset}=XX&{parametro_limit}=XX
 Cada respuesta incluirá información sobre la paginación en el cuerpo de la respuesta o en los encabezados:
 
 ```json
-{ ...,
-  "total": {total_elementos},
-  "limit": 100,
-  "offset": {valor_offset},
-  "data": [
+{   "page": 1,
+    "total_pages": 2,
+    "total_results": 85,
+    "data": [
     {...}, {...}
-  ],
-  "next": "{url_siguiente_pagina}",
-  "previous": "{url_pagina_anterior}"
+  ]
 }
 ```
 
 Donde:
 
-* **`total`** → Cantidad total de registros disponibles.
-* **`limit`** → Número de registros devueltos en esta página. Valor fijo de 100 resultados máximos.¿.
-* **`offset`** → Índice del primer elemento en la página actual.
+* **`total_pages`** → Cantidad total de páginas disponibles.
+* **`total_results`** → Número de registros devueltos en esta página. Valor máximo fijo de 100 resultados por página.
+* **`page`**→ número de página actual.
 * **`data`** → Conjunto de registros devueltos.
-* **`next`** → URL de la siguiente página (si existe).
-* **`previous`** → URL de la página anterior (si existe).
+

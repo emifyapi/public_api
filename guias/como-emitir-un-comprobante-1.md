@@ -227,7 +227,7 @@ Una vez que el comprobante tenga el estado `Accepted`, puedes descargar su versi
 #### 🔹 **Ejemplo de petición (cURL)**
 
 ```sh
---location --request POST '{{base_url}}/api/invoices/{{invoice_id}}/download-pdf/A4' \
+--location --request POST '{{base_url}}/api/invoices/{{invoice_id}}/download/A4' \
 --header 'x-api-key: {{apiKey}}'
 ```
 

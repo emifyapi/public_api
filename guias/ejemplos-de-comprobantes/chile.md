@@ -21,8 +21,8 @@ description: Agrupar por facturas y boletas
        "document_number": "77450199-1",
        "address": {
            "country": "CL",
-           "region": "CL-RM",
-           "city": "CL-LC",
+           "region": "CL-AN",
+           "city": "CL-ANF",
            "address": "Napoleon 3200"
        },
        "tax_information": {
@@ -42,8 +42,8 @@ description: Agrupar por facturas y boletas
        "document_number": "76995025-7",
        "address": {
            "country": "CL",
-           "region": "CL-RM",
-           "city": "CL-LC",
+           "region": "CL-LI",
+           "city": "CL-QTC",
            "address": "LOS MILITARES 5620 OF 905"
        },
        "tax_information": {
@@ -150,10 +150,10 @@ description: Agrupar por facturas y boletas
        "legal_name": "CONTABILIUM CHILE SPA",
        "document_type": "RUT",
        "document_number": "77450199-1",
-       "address": {
+      "address": {
            "country": "CL",
-           "region": "CL-RM",
-           "city": "CL-LC",
+           "region": "CL-AN",
+           "city": "CL-ANF",
            "address": "Napoleon 3200"
        },
        "tax_information": {
@@ -270,10 +270,10 @@ description: Agrupar por facturas y boletas
        "document_number": "77450199-1",
        "address": {
            "country": "CL",
-           "region": "CL-RM",
-           "city": "CL-LC",
+           "region": "CL-AN",
+           "city": "CL-ANF",
            "address": "Napoleon 3200"
-       },
+       }
        "tax_information": {
            "activity": "OTRAS ACTIVIDADES DE TECNOLOGIA DE LA INFORMACION Y DE SERVICIOS INFORMATICOS",
            "activity_codes": [
