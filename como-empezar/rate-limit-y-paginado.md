@@ -2,7 +2,7 @@
 
 ### 📌 **Rate Limit**
 
-Nuestra API implementa límites de tasa (_Rate Limiting_) para garantizar un uso equitativo y mantener la estabilidad del servicio.
+Nuestra API implementa límites de tasa (_Rate Limit_) para garantizar un uso equitativo y mantener la estabilidad del servicio.
 
 #### 🔹 **Límites de solicitudes**
 
