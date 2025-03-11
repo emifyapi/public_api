@@ -165,13 +165,13 @@ Requisitos:
   "external_reference": "103513046",
   "global_taxes": [
     {
-      "type": "AR_IMP_PROV"
+      "type": "AR_PER_IMP_NAC"
       "base_amount": 13190.48,
       "amount": 395.71,
       "rate": 3.0
     },
-    {
-      "type": "AR_IMP_PROV"
+    {a
+      "type": "AR_PER_IMP_NAC"
       "base_amount": 270.00,
       "amount": 4.05,
       "rate": 1.5

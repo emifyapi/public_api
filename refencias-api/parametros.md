@@ -10,7 +10,7 @@ Esta es una sección de consulta que tiene el objetivo de agrupar todos aquellos
 
 ### Additional Header Info
 
-El array `additional_header_info` permite agregar datos complementarios a la solicitud, dependiendo del caso de uso (Ejemplo: tipo de comprobante) y la normativa del país. **Todos los campos son opcionales, excepto `seller_name` y `seller_email`**, que deben incluirse en todas las solicitudes.
+El array `additional_header_info` permite agregar datos complementarios a la solicitud dependiendo del comprobante a emitir y la normativa del país.
 
 #### **Estructura genérica del JSON**
 
@@ -19,21 +19,21 @@ El array `additional_header_info` permite agregar datos complementarios a la sol
   "additional_header_info": {
     "seller_name": "Nombre del vendedor", 
     "seller_email": "vendedor@email.com",
-    "bank_account": "Cuenta bancaria asociada (MiPyme)",
+    "bank_account": "Cuenta bancaria asociada (Argentina)",
     "IndTraslado": "Indicador de traslado (Uruguay)",
     "NroInterno": "Número interno de referencia (Uruguay)",
     "ModVenta": "Modalidad de venta (Uruguay)",
     "ViaTransp": "Vía de transporte (Uruguay)",
     "ClauVenta": "Cláusula de venta (Uruguay)",
-    "IndServicio": 1, --- Chile 
-    "TipoTraslado": 2, --- Chile
-    "TipoDespacho": 3, --- Chile
+    "IndServicio": 11111, (Chile) 
+    "TipoTraslado": 22222, (Chile) 
+    "TipoDespacho": 333333, (Chile) 
     "Transporte": {
-      "Patente": "ABC123", --- Chile
-      "RUTTrans": "12345678-9", --- Chile
-      "RUTChofer": "87654321-0", --- Chile
-      "NombreChofer": "Juan Pérez" --- Chie
-    }
+      "Patente": "ABC123", 
+      "RUTTrans": "12345678-9", 
+      "RUTChofer": "87654321-0", 
+      "NombreChofer": "Juan Pérez" 
+    } (Chile) 
   }
 }
 ```
