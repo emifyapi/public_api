@@ -107,4 +107,4 @@ curl --request PUT '{{base_url}}/api/companies/{{id_empresa}}/enumeration/{{id_e
 
 #### **8. Configurar webhooks**
 
-Por último, opcionalmente puedes configurar webhooks para recibir notificaciones.
+Por último, opcionalmente puedes configurar webhooks para recibir notificaciones. [Ir a Webhooks](webhooks.md).
