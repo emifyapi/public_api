@@ -26,6 +26,10 @@ Content-Type: application/json
 }
 ```
 
+{% hint style="warning" %}
+Solo se puede configurar una URL Callback por empresa con la cantidad de eventos que necesites.
+{% endhint %}
+
 **Respuesta Exitosa**
 
 ```json
