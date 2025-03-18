@@ -20,7 +20,7 @@ curl --location '{{base_url}}/api/companies/webhooks/events' \
 
 #### Lista de eventos:
 
-<table><thead><tr><th width="178">Evento</th><th>Descripción</th><th data-hidden></th></tr></thead><tbody><tr><td>ISE</td><td>Actualización de estado del comprobante electrónico</td><td></td></tr><tr><td>REC</td><td>Aviso de recepción de comprobantes de compras</td><td></td></tr><tr><td>CER</td><td>Vencimientos de certificados digitales</td><td></td></tr><tr><td>ENU</td><td>Alerta de vencimientos y/o poca disponibilidad de enumeraciones cargadas en el sistema (Chile y Uruguay, Folios y CAEs respectivamente)</td><td></td></tr></tbody></table>
+<table><thead><tr><th width="178">Evento</th><th>Descripción</th><th data-hidden></th></tr></thead><tbody><tr><td>ISE</td><td>Notificación sobre cambios en el estado de un comprobante electrónico.</td><td></td></tr><tr><td>REC</td><td>Aviso de recepción de un comprobante de compra.</td><td></td></tr><tr><td>CER</td><td>Notificación sobre el próximo vencimiento de un certificado digital.</td><td></td></tr><tr><td>ENU</td><td>Alerta sobre el vencimiento o la baja disponibilidad de enumeraciones en el sistema (Folios en Chile y CAEs en Uruguay).</td><td></td></tr></tbody></table>
 
 ### **Configuración**
 
