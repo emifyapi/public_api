@@ -7,7 +7,20 @@ Los webhooks permiten recibir notificaciones en tiempo real cuando ocurren event
 1. **Registro del Webhook**: Debes proporcionar una URL a la que enviaremos las notificaciones.
 2. **Evento Disparador**: Cuando ocurre un evento configurado, nuestro sistema envía una solicitud HTTP `POST` a tu endpoint.
 3. **Formato del Payload**: La información del evento se envía en formato JSON en el cuerpo de la solicitud.
-4. **Respuesta Esperada**: Tu servidor debe responder con un código HTTP `200` para confirmar la recepción.
+4. **Respuesta Esperada**: Tu servidor debe responder dentro de los primeros 5 segundos con un código HTTP `200` para confirmar la recepción. Para más información sobre reintentos, ver sección [**Manejo de Respuestas**](webhooks.md#manejo-de-respuestas)**.**
+
+### **Eventos Disponibles**
+
+Se pueden consultar los eventos disponibles a través del siguiente recurso:
+
+```bash
+curl --location '{{base_url}}/api/companies/webhooks/events' \
+--header 'x-api-key: {{apiKey}}'
+```
+
+#### Lista de eventos:
+
+<table><thead><tr><th width="178">Evento</th><th>Descripción</th><th data-hidden></th></tr></thead><tbody><tr><td>ISE</td><td>Actualización de estado del comprobante electrónico</td><td></td></tr><tr><td>REC</td><td>Aviso de recepción de comprobantes de compras</td><td></td></tr><tr><td>CER</td><td>Vencimientos de certificados digitales</td><td></td></tr><tr><td>ENU</td><td>Alerta de vencimientos y/o poca disponibilidad de enumeraciones cargadas en el sistema (Chile y Uruguay, Folios y CAEs respectivamente)</td><td></td></tr></tbody></table>
 
 ### **Configuración**
 
@@ -51,27 +64,14 @@ Solo se puede configurar una URL Callback por empresa con la cantidad de eventos
 }
 ```
 
-#### **Eventos Disponibles**
-
-Se pueden consultar los eventos disponibles a través del siguiente recurso:
-
-```bash
-curl --location '{{base_url}}/api/companies/webhooks/events' \
---header 'x-api-key: {{apiKey}}'
-```
-
-#### Lista de eventos:
-
-<table><thead><tr><th width="178">Evento</th><th>Descripción</th><th data-hidden></th></tr></thead><tbody><tr><td>ISE</td><td></td><td></td></tr><tr><td>REC</td><td></td><td></td></tr><tr><td>CER</td><td></td><td></td></tr><tr><td>ENU</td><td></td><td></td></tr></tbody></table>
-
-**Ejemplo de Notificación Recibida**
+**Ejemplo de Notificación Recibida para evento ISE**
 
 Cuando ocurra un evento, enviaremos un `POST` con el siguiente formato:
 
 ```json
 {
     "document_id": "",
-    "event": "ISE",
+    "event": "Manejo de Respuestas",
     "external_reference": "",
     "status": "Accepted",
     "authorization_type": "CAE",
@@ -95,7 +95,7 @@ Cuando ocurra un evento, enviaremos un `POST` con el siguiente formato:
 
 Para garantizar la autenticidad de los webhooks:
 
-* Nuestra IP es ---—  la cual recomendamos agregar en una whitelist en tu hosting para evitar bloqueos.
+* Nuestra IP es ---—  la cual recomendamos agregar en una whitelist en tu servidor para evitar bloqueos.
 * Se recomienda validar la procedencia de los eventos antes de procesarlos.
 
 #### **Mejores Prácticas**

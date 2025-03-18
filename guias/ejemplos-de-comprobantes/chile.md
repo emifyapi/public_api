@@ -361,12 +361,3 @@ description: Agrupar por facturas y boletas
 
 
 </details>
-
-<details>
-
-<summary>Boleta de honorarios</summary>
-
-
-
-</details>
-

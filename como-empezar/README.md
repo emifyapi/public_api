@@ -11,17 +11,13 @@ Antes de comenzar, necesitarás una cuenta registrada y obtener un Bearer Token.
 
 ### 2. Seleccionar entorno:
 
-* Producción: es el ambiente para gestionar tus operaciones diarias y generar comprobantes válidos ante el organismo. Para usar este entorno, configurar `url_base` como:
-
-```
-https://emify.com/
-```
-
 * Sandbox: es un ambiente de pruebas que se puede utilizar para probar el flujo de creación de empresas y emisión e impresión de comprobantes. Los comprobantes generados en este ambiente no son válidos ante el organismo. Para usar este entorno, configurar `url_base` como:
 
 ```
-https://sandbox.emify.com/
+https://sandbox.emify.co/
 ```
+
+* Producción: una vez registrado, te compartiremos el ambiente de producción.
 
 ### 3. Autenticación
 
