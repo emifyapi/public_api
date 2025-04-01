@@ -1,29 +1,37 @@
 # Introducción
 
-Bienvenidos a la documentación oficial de nuestra API. Esta API está diseñada para proporcionar a los desarrolladores una manera fácil y eficiente de interactuar con nuestras plataformas, permitiendo la integración de funcionalidades clave en sus propias aplicaciones y servicios.
+Bienvenido a la documentación de la API de Emify. Esta API permite la creación de facturas y otros tipos de comprobantes en Argentina, Chile y Uruguay. Además, proporciona herramientas para la integración con sistemas de facturación mediante endpoints seguros y automatización de procesos.
 
-#### Propósito
+### Características principales
 
-El propósito de esta API es poder registrar usuarios, empresas y operaciones de facturación, permitiendo la integración con nuestros sistemas a través de un conjunto consistente de endpoints. Con un enfoque en la simplicidad y la seguridad, nuestra API está diseñada para ser robusta y flexible, adaptándose a las necesidades de diferentes tipos de aplicaciones, desde startups hasta grandes empresas.
+* **Facturación adaptada a cada país:** Soporte para la emisión de comprobantes según la normativa vigente en Argentina, Chile y Uruguay.
+* **Diversidad de comprobantes:** Generación de facturas, notas de crédito, notas de débito y otros documentos fiscales.
+* **Acceso seguro:** Autenticación mediante API Key y JWT Token.
+* **Formato de datos de entrada:** JSON.
+* **Formato de datos de salida:** JSON, PDF, Base64 y XML.
 
-#### Estructura
+### Quién puede usar esta API
 
-La documentación está organizada de manera que te guiará desde los conceptos básicos hasta los detalles más avanzados. Aquí encontrarás:
+Esta API está diseñada para ser utilizada por:
 
-* **Cómo empezar:** te ofrecemos los pasos básicos hacer tu primera petición.
-* **Autenticación y autorización**: cómo obtener acceso seguro a la API.
-* **Recursos y endpoints**: descripción detallada de cada endpoint disponible, incluyendo los métodos HTTP soportados y ejemplos de peticiones/respuestas.
-* **Código de errores**: guía sobre los posibles errores que pueden surgir.
-* **Guías**: ejemplos prácticos para ayudar a integrar la API en tus procesos.
-* **Historial de actualizaciones.**
-* **Estado del servicio.**
-* **Preguntas frecuentes**
+* Empresas que necesitan emitir comprobantes fiscales en Argentina, Chile y Uruguay.
+* Desarrolladores que buscan integrar funcionalidades de facturación en sus plataformas.
+* Aplicaciones de terceros que requieren acceso a datos de facturación.
 
-#### Audiencia
+### Requisitos previos
 
-Esta documentación está dirigida a desarrolladores, ingenieros de software y equipos técnicos que buscan integrar nuestras funcionalidades en sus soluciones. Se asume un conocimiento básico de RESTful APIs y del formato JSON.
+Antes de comenzar a usar la API, asegúrese de:
 
-#### Comenzando
+1. Tener una cuenta en Emify.
+2. Obtener una clave de API o credenciales de autenticación.
+3. Revisar los términos de uso y límites de la API.
 
-Si eres nuevo en nuestra API, te recomendamos comenzar con la sección de "Cómo empezar" para familiarizarte con los conceptos básicos y realizar tu primera llamada a la API en minutos.
+### Primeros pasos
 
+A continuación, se presenta un resumen del proceso para comenzar a utilizar la API:
+
+* **Autenticarse** para obtener un token de acceso.
+* **Realizar solicitudes** utilizando los endpoints disponibles.
+* **Manejar respuestas** correctamente para interpretar los códigos de estado y errores.
+
+Para más detalles sobre cada paso, consulte la sección **Cómo empezar**.

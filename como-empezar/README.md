@@ -38,7 +38,7 @@ Una vez autenticado, podrás crear una empresa para obtener una API Key y realiz
 
 ### **5. Explora los Endpoints:**
 
-Con tu API Key puedes explora los demás endpoints disponibles en la sección de Referencias API. Allí encontrarás detalles sobre cómo acceder a diferentes recursos y realizar operaciones más avanzadas.
+Con tu API Key puedes explora los demás endpoints disponibles en la sección de [`Referencias API`](../refencias-api/). Allí encontrarás detalles sobre cómo acceder a diferentes recursos y realizar operaciones más avanzadas.
 
 ### 6. Soporte:
 
