@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Preguntas frencuentes
 
 ### 📌 **Preguntas Frecuentes (FAQ)**
@@ -39,7 +43,7 @@ httpCopiarEditarAuthorization: Bearer {tu_token}
 Ejemplo:
 
 ```http
-httpCopiarEditarGET /recurso?{parametro_offset}=XX&{parametro_limit}=XX
+/recurso?{parametro_offset}=XX&{parametro_limit}=XX
 ```
 
 ❓ **¿Cómo obtengo la siguiente página de resultados?**\

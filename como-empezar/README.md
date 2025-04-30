@@ -2,11 +2,11 @@
 
 Esta guía de inicio rápido te permitirá realizar tu primera solicitud a la API en pocos minutos. A continuación, te llevaremos paso a paso por el proceso de configuración, autenticación y realización de una llamada básica.
 
-### 1. Crear tu cuenta y obtener las credenciales de la API
+### 1. Crea tu cuenta y obtener las credenciales de la API
 
 Antes de comenzar, necesitarás una cuenta registrada.
 
-### 2. Seleccionar entorno
+### 2. Selecciona entorno
 
 * Comienza en el entorno de pruebas (**Sandbox**), donde puedes testear sin afectar datos reales:
 
@@ -29,7 +29,7 @@ curl --location 'https://sandbox.emify.co/api/login' \
 }'
 ```
 
-### 4. Crear tu primera empresa:
+### 4. Crea tu primera empresa:
 
 Una vez autenticado, podrás crear una empresa para obtener una API Key y realizar operaciones con esta. Para más información, consultar la sección [Cómo dar de alta una empresa.](../como-dar-de-alta-una-empresa.md)
 
