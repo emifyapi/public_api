@@ -108,3 +108,7 @@ curl --request PUT '{{base_url}}/api/companies/{{id_empresa}}/enumeration/{{id_e
 #### **8. Configurar webhooks**
 
 Por último, opcionalmente puedes configurar webhooks para recibir notificaciones. [Ir a Webhooks](webhooks.md).
+
+### 🚀 Ya está todo listo. Ahora puedes comenzar a emitir comprobantes a través de la API.
+
+👉 Te recomendamos continuar con la guía [**Cómo emitir un comprobante**](guias/como-emitir-un-comprobante.md) para conocer el paso a paso.

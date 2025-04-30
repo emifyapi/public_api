@@ -2,29 +2,26 @@
 
 Esta guía de inicio rápido te permitirá realizar tu primera solicitud a la API en pocos minutos. A continuación, te llevaremos paso a paso por el proceso de configuración, autenticación y realización de una llamada básica.
 
-### 1. Obtener las Credenciales de la API (Cómo registrarte)
+### 1. Crear tu cuenta y obtener las credenciales de la API
 
-Antes de comenzar, necesitarás una cuenta registrada y obtener un Bearer Token. Sigue estos pasos:
+Antes de comenzar, necesitarás una cuenta registrada.
 
-1. **Registro**: para registrar una cuenta, puedes hacerlo desde nuestra plataforma.
-2. **Generar Bearer Token**: Una vez registrado, puedes generar el Token a través de Login.
+### 2. Seleccionar entorno
 
-### 2. Seleccionar entorno:
-
-* Sandbox: es un ambiente de pruebas que se puede utilizar para probar el flujo de creación de empresas y emisión e impresión de comprobantes. Los comprobantes generados en este ambiente no son válidos ante el organismo. Para usar este entorno, configurar `url_base` como:
+* Comienza en el entorno de pruebas (**Sandbox**), donde puedes testear sin afectar datos reales:
 
 ```
 https://sandbox.emify.co/
 ```
 
-* Producción: una vez registrado, te compartiremos el ambiente de producción.
+* Una vez que tu implementación esté lista, solicita acceso al entorno de **Producción**.
 
-### 3. Autenticación
+### 3. Genera un bearer token
 
-Para acceder a la API, todas las solicitudes deben incluir el Bearer Token en el encabezado de la solicitud. Aquí te mostramos un ejemplo utilizando `cURL`:
+Para acceder a la API, todas las solicitudes deben incluir el Bearer Token en el encabezado de la solicitud. Para obtenerlo, tenés que usar el endpoint de Login:
 
-```bash
-curl --location 'https://facttuapi.contabilium.com/api/login' \
+```json
+curl --location 'https://sandbox.emify.co/api/login' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "email":"email@example.com",
@@ -32,13 +29,13 @@ curl --location 'https://facttuapi.contabilium.com/api/login' \
 }'
 ```
 
-### 4. Dar de alta una empresa:
+### 4. Crear tu primera empresa:
 
 Una vez autenticado, podrás crear una empresa para obtener una API Key y realizar operaciones con esta. Para más información, consultar la sección [Cómo dar de alta una empresa.](../como-dar-de-alta-una-empresa.md)
 
-### **5. Explora los Endpoints:**
+### **5. Explora otros Endpoints:**
 
-Con tu API Key puedes explora los demás endpoints disponibles en la sección de [`Referencias API`](../refencias-api/). Allí encontrarás detalles sobre cómo acceder a diferentes recursos y realizar operaciones más avanzadas.
+Con tu API Key puedes explorar los demás endpoints disponibles en la sección de [`Referencias API`](../refencias-api/). Allí encontrarás detalles sobre cómo acceder a diferentes recursos y realizar operaciones más avanzadas.
 
 ### 6. Soporte:
 
