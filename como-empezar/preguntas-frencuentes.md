@@ -1,7 +1,3 @@
----
-hidden: true
----
-
 # Preguntas frencuentes
 
 ### 📌 **Preguntas Frecuentes (FAQ)**
@@ -14,40 +10,24 @@ A continuación, se responden algunas de las preguntas más comunes sobre el uso
 💬 Para realizar solicitudes, debes incluir un token de autenticación en el encabezado `Authorization`. Ejemplo:
 
 ```http
-httpCopiarEditarAuthorization: Bearer {tu_token}
+Authorization: Bearer {tu_token}
 ```
 
 ❓ **¿Cuánto dura el token de autenticación?**\
-💬 El token tiene una validez de `{duración}` y debe renovarse antes de su vencimiento.
+💬 El token tiene una validez de `{24 horas}` y debe renovarse antes de su vencimiento.
 
 ❓ **¿Cómo renuevo mi token de acceso?**\
-💬 Puedes solicitar un nuevo token enviando una solicitud al endpoint `{endpoint_de_auth}` con tus credenciales.
+💬 Puedes solicitar un nuevo token enviando una solicitud al endpoint `{/login}` con tus credenciales.
 
 ***
 
 #### 🔹 **Rate Limit y Uso de la API**
 
 ❓ **¿Cuántas solicitudes puedo hacer por minuto?**\
-💬 La API permite `{cantidad}` solicitudes por `{periodo}`. Si superas este límite, recibirás un error `429 Too Many Requests`.
+💬 La API permite `{`50`}` solicitudes por `{segundo}`. Si superas este límite, recibirás un error `429 Too Many Requests`.
 
 ❓ **¿Cómo sé cuántas solicitudes me quedan?**\
 💬 En cada respuesta de la API, incluimos encabezados como `X-Rate-Limit-Remaining` para indicar el número de solicitudes restantes.
-
-***
-
-#### 🔹 **Paginado y Manejo de Datos**
-
-❓ **¿Cómo funciona la paginación en la API?**\
-💬 Nuestra API utiliza `{tipo_de_paginado}`. Debes incluir los parámetros `{parametro_offset}` y `{parametro_limit}` en la URL.
-
-Ejemplo:
-
-```http
-/recurso?{parametro_offset}=XX&{parametro_limit}=XX
-```
-
-❓ **¿Cómo obtengo la siguiente página de resultados?**\
-💬 En la respuesta, encontrarás la clave `"next"` con la URL de la siguiente página.
 
 ***
 
@@ -64,10 +44,5 @@ Ejemplo:
 
 ***
 
-#### 🔹 **Soporte y Contacto**
-
-❓ **¿Dónde puedo reportar un problema con la API?**\
-💬 Puedes reportar incidencias a través de `{correo_de_soporte}` o en `{plataforma_de_soporte}`.
-
 ❓ **¿Existe un ambiente de pruebas (sandbox)?**\
-💬 Sí, ofrecemos un entorno de pruebas en `{URL_sandbox}`, donde puedes simular solicitudes sin afectar datos reales.
+💬 Sí, ofrecemos un entorno de pruebas en `https://sandbox.emify.co/`, donde puedes simular solicitudes sin afectar datos reales.

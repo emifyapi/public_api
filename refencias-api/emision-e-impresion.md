@@ -143,15 +143,11 @@ El array `global_taxes` contiene información sobre los impuestos aplicados glob
 [getInvoice.yaml](../.gitbook/assets/getInvoice.yaml)
 {% endopenapi %}
 
-Anulación rápida de comprobante. Genera una nota de crédito a partir de un ID comprobante - Esto no existe, creé una historia
+Anulación rápida de comprobante. Genera una nota de crédito a partir de un ID comprobante
 
 {% openapi src="../.gitbook/assets/NC_yaml.yaml" path="/api/invoices/{{invoice_id}}/void" method="delete" %}
 [NC_yaml.yaml](../.gitbook/assets/NC_yaml.yaml)
 {% endopenapi %}
-
-
-
-Obtener PDF (todos los formatos) - No funciona
 
 {% openapi src="../.gitbook/assets/pdf_yaml.yaml" path="/api/invoices/{{invoice_id}}/download-pdf/A4" method="post" %}
 [pdf_yaml.yaml](../.gitbook/assets/pdf_yaml.yaml)
@@ -160,8 +156,6 @@ Obtener PDF (todos los formatos) - No funciona
 {% openapi src="../.gitbook/assets/pdf_yaml.yaml" path="/api/invoices/{{invoice_id}}/download-pdf/58mm" method="post" %}
 [pdf_yaml.yaml](../.gitbook/assets/pdf_yaml.yaml)
 {% endopenapi %}
-
-## _Falta 80mm_
 
 {% openapi src="../.gitbook/assets/XML_facttu.yaml" path="/api/invoices/{{invoice_id}}/download/xml" method="post" %}
 [XML_facttu.yaml](../.gitbook/assets/XML_facttu.yaml)
